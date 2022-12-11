@@ -130,6 +130,7 @@
     "start": "webpack-dev-server --mode development --inline --progress",
     "build": "webpack --mode production",
     "dev": "webpack-dev-server",
+    "start-script": "react-scripts start",
     "production": "webpack --mode production",
     "preinstall": "npx npm-force-resolutions"
   },
