@@ -273,7 +273,7 @@ window.addEventListener('scroll',changeBackground);
                     :""}
                   </li>
                   <li className={pathname === "login" ? "active" : ""}>
-                    <Link to="/login">Login</Link>
+                    <Link to="/login">Login Bleble</Link>
                   </li>
                   <li className={pathname === "register" ? "active" : ""}>
                     <Link to="/register">Register</Link>
@@ -398,7 +398,7 @@ window.addEventListener('scroll',changeBackground);
               </li>
               <li className={pathname === "login" ? "active" : ""}>
                 <Link to="/login" className="log-btn">
-                  <i className="fas fa-lock" /> Login
+                  <i className="fas fa-lock" /> Login ble ble
                 </Link>
               </li>
               <li className={pathname === "post-project" ? "active" : ""}>

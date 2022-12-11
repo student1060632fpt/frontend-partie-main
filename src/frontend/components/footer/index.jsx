@@ -7,10 +7,7 @@ const Footer =(props)=> {
   const pathname = props.location.pathname.split("/")[1];
     
   const exclusionArray = [
-    "/index-two",
-    "/index-three",
-    "/index-four",
-    "/index-five",
+
   ];
   if (exclusionArray.indexOf(props.location.pathname) >= 0) {
     return "";
