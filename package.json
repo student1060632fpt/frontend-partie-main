@@ -128,7 +128,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --mode development --inline --progress",
-    "build": "webpack --mode production",
+    "build": "webpack --mode production && now ./build",
     "dev": "webpack-dev-server",
     "start-script": "react-scripts start",
     "production": "webpack --mode production",
