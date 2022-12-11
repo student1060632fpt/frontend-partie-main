@@ -1,6 +1,3 @@
-import { throws } from "assert";
-import {utils} from "near-api-js";
-
 // ABI
 
 export class FungibleToken{
