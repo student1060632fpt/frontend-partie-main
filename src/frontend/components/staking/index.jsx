@@ -1,4 +1,5 @@
 import React, {useState, useEffect } from "react";
+import { ethers } from "ethers";
 import { Link } from "react-router-dom";
 import StickyBox from "react-sticky-box";
 import { Developer_01, Flags_en } from "../imagepath";
@@ -53,7 +54,7 @@ const Staking = (props) => {
 
     const handelChangeDeposit = event =>{
         let value =event.target.value;
-        var regex1 = /^[0-9]*[\.,]?[0-9]*$/g;
+        var regex1 = /^[0-9]*(\.)?[0-9]*$/g;
         const check = !regex1.test(event.target.value);
         if (check){ 
         value  = valueDeposit;
@@ -66,7 +67,7 @@ const Staking = (props) => {
 
     const handelChangeWithdraw = event =>{
         let value =event.target.value;
-        var regex1 = /^[0-9]*[\.,]?[0-9]*$/g;
+        var regex1 = /^[0-9]*(\.)?[0-9]*$/g;
         const check = !regex1.test(event.target.value);
         if (check){ 
         value  = valueWithdraw;
@@ -158,7 +159,7 @@ const Staking = (props) => {
                                                 <span>PAT</span>
                                             </div>
                                             
-                                            <button onClick={() => {submitStake(valueDeposit*(10**18))}} disabled={valueDeposit?false:true}>Stake</button>
+                                            <button onClick={() => {submitStake(ethers.utils.parseUnits(valueDeposit.toString(),18))}} disabled={valueDeposit?false:true}>Stake</button>
                                         </div>
                                     </TabPanel>
                                     <TabPanel>
@@ -180,7 +181,7 @@ const Staking = (props) => {
                                                 <button onClick={() => {setValueWithdraw(balanceVeFt/(10**18))}}>MAX</button>
                                                 <span>PAT</span>
                                             </div>                                         
-                                            <button onClick={() => {submitUnStake(valueWithdraw*(10**18))}} disabled={valueWithdraw?false:true}>UnStake</button>
+                                            <button onClick={() => {submitUnStake(ethers.utils.parseUnits(valueWithdraw.toString(),18))}} disabled={valueWithdraw?false:true}>UnStake</button>
                                         </div>
                                     </TabPanel>
                                 </Tabs>

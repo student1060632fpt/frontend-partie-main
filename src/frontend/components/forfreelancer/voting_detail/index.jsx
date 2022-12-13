@@ -101,11 +101,11 @@ const VotingDetail = (props) => {
                                     </div>
                                     <div className="d-flex justify-content-between align-items-center">
                                         <div>Start date</div>
-                                        <div>{votingDetail.poll.start}</div>
+                                        <div>{(new Date(votingDetail.poll.start/(10**6))).toGMTString()}</div>
                                     </div>
                                     <div className="d-flex justify-content-between align-items-center">
                                         <div>End date</div>
-                                        <div>{votingDetail.poll.end}</div>
+                                        <div>{(new Date(votingDetail.poll.end/(10**6))).toGMTString()}</div>
                                     </div>
                                     <div className="d-flex justify-content-between align-items-center">
                                         <div>Total Voted</div>
