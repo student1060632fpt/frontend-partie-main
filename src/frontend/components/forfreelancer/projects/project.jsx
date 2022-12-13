@@ -108,7 +108,7 @@ const Projects = (props) => {
               </div>
             </div>
             <div className="cart-hover">
-              <Link to="/project-details" className="btn-cart" tabIndex={-1}>
+              <Link to={`/project-details/${jobItem[0]}`} className="btn-cart" tabIndex={-1}>
                 Bid Now
               </Link>
             </div>

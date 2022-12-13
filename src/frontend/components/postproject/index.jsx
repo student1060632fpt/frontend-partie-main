@@ -1,16 +1,47 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import ReactSummernote from "react-summernote";
 import "react-summernote/dist/react-summernote.css";
+import { makeRandomId } from "../../../shared/help";
 import { Breadcrumb } from "../common";
 
 const PostProject = (props) => {
-  const [value, setValue] = useState({});
+  const [value, setValue] = useState({
+    tokenTitle: "",
+    budget:""
+  });
+  const {contract_id} = useSelector(state=> state.wallet)
   const onChangeValue = (e) => {
     setValue((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
+  };
+  const onSubmitJob = async (e) => {
+    e.preventDefault();
+    const jobsId = makeRandomId();
+    const dataInput = {
+      purpose: "up jobs",
+      para: jobsId,
+    };
+    console.log({jobsId});
+    const stringData = JSON.stringify(dataInput);
+    console.log("stringData ", stringData);
+    const rp = stringData.replace(/["]+/g, '"');
+    console.log("rp: ", rp);
+    try {
+      
+      await contract_id
+      .get("ftContractId")
+      .ft_transfer_call(
+        "staking-test16.thanhdevtest.testnet",
+        value.budget.toString(),
+        rp
+        );
+      } catch (error) {
+        console.log({error});
+      }
   };
   return (
     <>
@@ -18,12 +49,12 @@ const PostProject = (props) => {
       <Breadcrumb title="Post a Job" />
       {/* /Breadcrumb */}
       {/* Page Content */}
-      <div className="content">
+      <div className="content px-5">
         <div className="container">
           <div className="row">
             <div className="col-md-12">
               <div className="select-project mb-4">
-                <form>
+                <form onSubmit={onSubmitJob}>
                   <div className="title-box widget-box">
                     {/* Project Title */}
                     <div className="title-content">
@@ -72,85 +103,17 @@ const PostProject = (props) => {
                             <option value={3}>Biding Price</option>
                           </select>
                         </div>
-                        <div
-                          className="form-group mt-3"
-                          id="price_id"
-                          style={{ display: "none" }}
-                        >
+                        <div className="form-group mt-3" id="price_id">
                           <div className="input-group">
                             <div className="input-group-prepend">
-                              <button
-                                type="button"
-                                className="btn btn-white dropdown-toggle"
-                                data-bs-toggle="dropdown"
-                              >
-                                $
-                              </button>
-                              <div className="dropdown-menu">
-                                <a className="dropdown-item" href="#">
-                                  Dollars
-                                </a>
-                                <a className="dropdown-item" href="#">
-                                  Euro
-                                </a>
-                                <a className="dropdown-item" href="#">
-                                  Bitcoin
-                                </a>
-                              </div>
+                              <span className="input-group-text">$</span>
                             </div>
                             <input
                               type="text"
                               className="form-control"
-                              placeholder={20.0}
+                              name="budget"
+                              aria-label="Amount (to the nearest dollar)"
                             />
-                          </div>
-                        </div>
-                        <div
-                          className="form-group mt-3"
-                          id="hour_id"
-                          style={{ display: "none" }}
-                        >
-                          <div className="row">
-                            <div className="col-md-6 mb-2">
-                              <div className="input-group form-inline">
-                                <div className="input-group-prepend">
-                                  <button
-                                    type="button"
-                                    className="btn btn-white dropdown-toggle"
-                                    data-bs-toggle="dropdown"
-                                  >
-                                    $
-                                  </button>
-                                  <div className="dropdown-menu">
-                                    <a className="dropdown-item" href="#">
-                                      Dollars
-                                    </a>
-                                    <a className="dropdown-item" href="#">
-                                      Euro
-                                    </a>
-                                    <a className="dropdown-item" href="#">
-                                      Bitcoin
-                                    </a>
-                                  </div>
-                                </div>
-                                <input
-                                  type="text"
-                                  className="form-control mr-2"
-                                  placeholder={20.0}
-                                />{" "}
-                                <label> / hr</label>
-                              </div>
-                            </div>
-                            <div className="col-md-6">
-                              <div className="input-group form-inline">
-                                <label>For </label>{" "}
-                                <input
-                                  type="text"
-                                  className="form-control ml-2"
-                                  placeholder=" ( eg: 2 Weeks)"
-                                />
-                              </div>
-                            </div>
                           </div>
                         </div>
                       </div>
