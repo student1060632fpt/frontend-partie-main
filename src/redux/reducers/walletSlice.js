@@ -12,9 +12,10 @@ const walletSlice = createSlice({
   reducers: {
     getSignInWallet:(state,action)=>{
       const newState = {...action.payload}
-      state.isSignedIn=newState.isSignedIn
-      state.contract_id=newState.contract_id
-      state.wallet=newState.wallet
+     
+      return {
+        ...newState
+      }
     }
   }
 });
