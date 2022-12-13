@@ -4,6 +4,7 @@ import StickyBox from "react-sticky-box";
 import { Developer_01, Flags_en } from "../imagepath";
 import { Sidebar } from "../forfreelancer/sidebar";
 import { useSelector } from "react-redux";
+import { Tabs } from 'antd';
 
 const Staking = (props) => {
     const [stakingVisible, setStakingVisible] = useState(false);
@@ -12,6 +13,10 @@ const Staking = (props) => {
     const { contract_id, wallet, isSignedIn } = useSelector(
         (state) => state.wallet
       );
+
+    const onChange = (key) => {
+    console.log(key);
+    };
 
     async function fetchTotalStaked() {
         let data = await contract_id.get("stakingContractId").ft_total_supply()
@@ -56,18 +61,48 @@ const Staking = (props) => {
                         </div>
 
                     {/* project list */}
-                        <div className="my-projects-list">
-                            <div className="col-lg-10 flex-wrap">
-                                <div className="card-body border rounded">
-                                    <span>Dreamguystech</span>
-                                    <h2>
-                                    Website Designer Required For Directory Theme Website
-                                    Designer Required For Directory Theme Website Designer                                   
-                                    </h2>
-                                    <div>Total staked: {totalStaked/(10**18)}</div>
-                                    <button>Stake</button>
-                                    <button>UnStake</button>
+                        <div className="staking">
+                            <div className="border">
+                                <span>Overview</span>
+                                <div className="border">
+                                    <span style={{color:"red"}}>Total staked</span>
+                                    <p>$23,061,729</p>
                                 </div>
+                                <div className="border"> 
+                                    <span>APR</span>
+                                    <p>3.62%</p>
+                                </div>
+
+                                <div className="border">
+                                    <span>Stake Information</span>
+                                    <p>Claim your share of protocol revenue generated.</p>
+                                </div>
+
+                            </div>
+                            <div className="border">  
+                                <div className="border">
+                                    Stake/ UnStake
+
+                                </div>
+                                <div className="border">
+                                    <span>My Positions</span>
+                                    <div>
+                                        <div>  
+                                            <p>Staked</p> 
+                                            <p>0 PAT</p> 
+
+                                        </div>
+                                        <div>
+                                            <p>Pending Rewards</p> 
+                                            <p>0 NEAR</p>
+                                        </div>
+                                    </div>
+                                    <div className="border">
+                                        <button>Get Harvest</button>
+                                    </div>
+
+                                </div>
+
                             </div>
                         </div>
                     {/* /pagination */}

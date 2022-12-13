@@ -23185,4 +23185,18 @@ span.badge.badge-pill.badge-design {
 	.testimonial-two .owl-item.active {
 		width: 296px !important;
 	}
+
+
+
+	///////////// staking //////////////////
+	.staking {
+		display: flex;
+		align-items: center;
+		justify-content: space-evenly;
+	}
+
+	.staking span {
+		color: #fff;
+
+	}
 }
