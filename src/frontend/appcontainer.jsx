@@ -243,7 +243,7 @@ const AppContainer = function (props) {
             <Route exact path="/change-password" component={ChangePassword} />
             <Route exact path="/delete-account" component={DeleteAccount} />
             <Route exact path="/verify-identity" component={VerifyIdentity} /> 
-            <Route exact path="/project-proposals" component={Projectproposal} />
+            <Route exact path="/project-proposals/:id" component={Projectproposal} />
             {/* For Freelancer */}
             <Route exact path="/project" component={Project} />
             <Route exact path="/project-details/:id" component={ProjectDetails} /> 
