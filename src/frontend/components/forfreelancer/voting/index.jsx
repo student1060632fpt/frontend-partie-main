@@ -76,6 +76,7 @@ const Voting = (props) => {
                                 <div>
                                 {
                                     poll.map(item => {
+                                        
                                         return (
                                             <div className="projects-card flex-fill">
                                             <div className="card-body">
@@ -91,14 +92,14 @@ const Voting = (props) => {
                                                         <li>
                                                         <div className="slot">
                                                             <p>Start time</p>
-                                                            <h5>{item[1].start}</h5>
+                                                            <h5>{(new Date(item[1].start/(10**6))).toGMTString()}</h5>
                                                         </div>
                                                         </li>
                                                         
                                                         <li>
                                                         <div className="slot">
                                                             <p>End time</p>
-                                                            <h5>{item[1].end}</h5>
+                                                            <h5>{(new Date(item[1].end/(10**6))).toGMTString()}</h5>
                                                         </div>
                                                         </li>
                                                     </ul>
