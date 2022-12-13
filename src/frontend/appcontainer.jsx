@@ -120,6 +120,7 @@ if (
   require('./assets/js/bootstrap.min.js');
   require("./assets/css/style.css");
 }
+
 const AppContainer = function (props) {
   
   if (props) {

@@ -30,6 +30,7 @@ const Header = (props) => {
     require('../assets/css/style.css')
 
   }
+
   
   const exclusionArray =[
     '/admin/login',

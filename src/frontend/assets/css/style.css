@@ -23186,17 +23186,21 @@ span.badge.badge-pill.badge-design {
 		width: 296px !important;
 	}
 
+}
 
 
-	///////////// staking //////////////////
-	.staking {
-		display: flex;
-		align-items: center;
-		justify-content: space-evenly;
-	}
+/* staking */
+.staking {
+	display: flex;
+	/* align-items: center; */
+	justify-content: space-evenly;
+}
 
-	.staking span {
-		color: #fff;
-
-	}
+.staking .overview{
+	display: flex;
+	/* align-items: center; */
+	/* justify-content: space-evenly; */
+}
+.flex {
+	display: flex;
 }

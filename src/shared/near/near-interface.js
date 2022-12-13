@@ -59,6 +59,17 @@ export class veFungibleToken{
         })
     }
 
+    async withdraw(amount_stake){
+        return await this.wallet.callMethod({
+            contractId: this.contractId,
+            method: "withdraw",
+            args: {
+                amount_stake: amount_stake,
+            },
+            deposit: 1
+        })
+    }
+
     async ft_balance_of(account_id){
         return await this.wallet.viewMethod({
             contractId: this.contractId,
