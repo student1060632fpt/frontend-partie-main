@@ -58,9 +58,9 @@ const ProjectDetails = () => {
     if (!jobDetail.freelancers) {
       return <></>;
     }
-    return Object.entries(jobDetail.freelancers).map((proposalDetail) => {
+    return Object.entries(jobDetail.freelancers).map((proposalDetail,index) => {
       return (
-        <div className="bids-card">
+        <div className="bids-card" key={index}>
           <div className="row align-items-center">
             <div className="col-lg-2">
               <div className="author-img-wrap">

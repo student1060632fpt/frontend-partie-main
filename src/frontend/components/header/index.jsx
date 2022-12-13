@@ -288,7 +288,7 @@ const Header = (props) => {
                     <li
                       className={pathname === "manage-projects" ? "active" : ""}
                     >
-                      <Link to="/manage-projects">Jobs</Link>
+                      <Link to="/manage-projects">Manage Projects</Link>
                     </li>
                     <li
                       className={

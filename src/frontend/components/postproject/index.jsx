@@ -5,17 +5,23 @@ import ReactSummernote from "react-summernote";
 import "react-summernote/dist/react-summernote.css";
 import { makeRandomId } from "../../../shared/help";
 import { Breadcrumb } from "../common";
+import { useHistory } from "react-router-dom";
 
 const PostProject = (props) => {
   const [value, setValue] = useState({
     tokenTitle: "",
-    budget:""
+    budget:0
   });
+  let history = useHistory();
   const {contract_id} = useSelector(state=> state.wallet)
   const onChangeValue = (e) => {
+    e.persist();
+    if(!e?.target?.value && !e?.target?.name){
+      return 
+    }
     setValue((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value,
+      [e?.target?.name]: e?.target?.value,
     }));
   };
   const onSubmitJob = async (e) => {
@@ -25,20 +31,21 @@ const PostProject = (props) => {
       purpose: "up jobs",
       para: jobsId,
     };
-    console.log({jobsId});
     const stringData = JSON.stringify(dataInput);
-    console.log("stringData ", stringData);
     const rp = stringData.replace(/["]+/g, '"');
-    console.log("rp: ", rp);
+    const budget = value.budget*(10**18)
+    console.log(value.budget,"budget = ",budget,"budget to string",budget.toString() );
     try {
       
       await contract_id
       .get("ftContractId")
       .ft_transfer_call(
         "staking-test16.thanhdevtest.testnet",
-        value.budget.toString(),
+        budget.toString(),
         rp
-        );
+        )
+        history.push("/project")
+        
       } catch (error) {
         console.log({error});
       }
@@ -109,8 +116,10 @@ const PostProject = (props) => {
                               <span className="input-group-text">$</span>
                             </div>
                             <input
-                              type="text"
+                              type="number"
                               className="form-control"
+                              onChange={onChangeValue}
+                              value={value.budget}
                               name="budget"
                               aria-label="Amount (to the nearest dollar)"
                             />
