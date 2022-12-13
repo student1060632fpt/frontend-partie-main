@@ -113,6 +113,7 @@
     "react-slick": "^0.27.1",
     "react-sticky-box": "^0.9.3",
     "react-summernote": "^2.0.2",
+    "react-tabs": "^4.2.1",
     "react-tag-input": "^6.4.3",
     "react-tag-input-component": "^2.0.2",
     "react-to-pdf": "^0.0.13",
