@@ -102,13 +102,7 @@ const Footer =(props)=> {
                         <a href="/freelancer-dashboard">Freelancers</a>
                       </li>
                       <li>
-                        <a href="/freelancer-portfolio">Freelancer Details</a>
-                      </li>
-                      <li>
                         <a href="/project">Project</a>
-                      </li>
-                      <li>
-                        <a href="/project-details">Project Details</a>
                       </li>
                       <li>
                         <a href="post-/project">Post Project</a>
