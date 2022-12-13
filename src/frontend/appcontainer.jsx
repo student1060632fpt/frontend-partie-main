@@ -9,6 +9,9 @@ import PostProject from "./components/postproject";
 //home
 import Home from "./components/home";
 
+//staking
+import Staking from "./components/staking";
+
 //For Employee
 import Developer from "./components/foremployers/developer/developer";
 import DeveloperDetails from "./components/foremployers/developer/developer_details";
@@ -106,6 +109,8 @@ import './assets/plugins/datatables/datatables.min.css';
 import './assets/js/bootstrap.bundle.min.js';
 import './assets/js/profile-settings.js';
 import './assets/js/slick.js';
+import Voting from "./components/forfreelancer/voting";
+import VotingDetail from "./components/forfreelancer/voting_detail";
 
 
 if (
@@ -206,6 +211,10 @@ const AppContainer = function (props) {
           <Route exact path="/company-profile" component={CompanyProfile}/>
           <Route exact path="/post-project" component={PostProject} />  
           <Route exact path="/company-project" component={CompanyProject}/>
+
+          {/* Staking */}
+          <Route exact path="/staking" component={Staking} /> 
+
          {/* For Employer */}
             <Route exact path="/developer" component={Developer} />
             <Route exact path="/developer-details" component={DeveloperDetails} /> 
@@ -240,6 +249,8 @@ const AppContainer = function (props) {
             <Route exact path="/freelancer-dashboard" component={FreelancerDashboard} />
             <Route exact path="/freelancer-project-proposals" component={FreelancerProjectproposal} />
             <Route exact path="/view-proposals" component={ViewProposals} />
+            <Route exact path="/voting" component={Voting} />
+            <Route exact path="/voting-detail" component={VotingDetail} />
             <Route exact path="/freelancer-completed-projects" component={FreelacerCompletedProjects} />
             <Route exact path="/freelancer-ongoing-projects" component={FreelacerOngoingProjects} />
             <Route exact path="/freelancer-cancelled-projects" component={FreelacerCancelledProjects} />
