@@ -5,10 +5,8 @@ import { useLocation } from 'react-router-dom';
 const HeaderLoginWithNear = () => {
   let location = useLocation()
   const {wallet} = useSelector(state => state.wallet)
-  console.log({wallet});
-  console.log("contract",process.env.FT_CONTRACT_ID);
 
-  console.log({location});
+
   const pathname = location.pathname.split("/")[1];
   return (
     <ul className="nav header-navbar-rht">

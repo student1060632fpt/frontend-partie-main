@@ -20,6 +20,10 @@ const Projects = (props) => {
   );
   const fetJobs = async () => {
     try {
+      console.log({contract_id});
+      if(!contract_id){
+        return
+      }
       let data = await contract_id.get("stakingContractId").get_list_jobs();
       setJobs(Object.entries(data));
       console.log("jobs: ", Object.entries(data));
