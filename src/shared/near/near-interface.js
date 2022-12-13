@@ -114,7 +114,7 @@ export class veFungibleToken{
             contractId: this.contractId,
             method: "show_jobs",
             args: {
-                jobs_id: jobs_id
+                jobs_id
             },
         })
     }

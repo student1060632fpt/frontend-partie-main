@@ -46,7 +46,7 @@ const PostProject = (props) => {
   return (
     <>
       {/* Breadcrumb */}
-      <Breadcrumb title="Post a Job" />
+      <Breadcrumb title="Post a Project" />
       {/* /Breadcrumb */}
       {/* Page Content */}
       <div className="content px-5">

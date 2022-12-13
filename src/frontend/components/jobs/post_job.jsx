@@ -10,16 +10,16 @@ class PostJob extends React.Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 offset-md-2">
-                        {/* Post A job */}
+                        {/* Post a Project */}
                             <div className="empty-content text-center">
-                                <h2>Please <span className="orange-text">Login</span> to Post A job </h2>
+                                <h2>Please <span className="orange-text">Login</span> to Post a Project </h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consequat mauris </p>
                                 <div className="btn-item">
                                     <Link className="btn get-btn" to="/">Cancel</Link>
                                     <Link className="btn courses-btn" to="/login">GO TO Login</Link>
                                 </div>
                             </div>
-                        {/* /Post A job */}
+                        {/* /Post a Project */}
                         </div>
                     </div>
                 </div>

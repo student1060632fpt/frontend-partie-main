@@ -42,6 +42,7 @@ const Projects = (props) => {
 }
   const renderListJob = () => {
     return jobs.map((jobItem, index) => {
+      console.log("jobItem[0]",jobItem[0]);
       return (
         <div className="col-md-6 col-lg-12 col-xl-6" key={index}>
           <div className="freelance-widget widget-author">

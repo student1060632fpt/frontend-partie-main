@@ -88,7 +88,7 @@ const Freelancer = (props) => {
                           <span className="price-type">( FIXED )</span>
                         </div>
                         <div className="proposal-type">
-                          <h4 className="title-info">Job Type</h4>
+                          <h4 className="title-info">Project Type</h4>
                           <h3>Hourly</h3>
                         </div>
                       </div>
@@ -165,7 +165,7 @@ const Freelancer = (props) => {
                           <span className="price-type">( FIXED )</span>
                         </div>
                         <div className="proposal-type">
-                          <h4 className="title-info">Job Type</h4>
+                          <h4 className="title-info">Project Type</h4>
                           <h3>Hourly</h3>
                         </div>
                       </div>
@@ -241,7 +241,7 @@ const Freelancer = (props) => {
                           <span className="price-type">( FIXED )</span>
                         </div>
                         <div className="proposal-type">
-                          <h4 className="title-info">Job Type</h4>
+                          <h4 className="title-info">Project Type</h4>
                           <h3>Hourly</h3>
                         </div>
                       </div>
