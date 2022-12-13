@@ -23,22 +23,22 @@ const wallet = new Wallet({
 });
 
 const ftContractId = new FungibleToken({
-  contractId: "partie-test2.thanhdevtest.testnet",
+  contractId: process.env.FT_CONTRACT_ID,
   wallet,
 });
 
 const stakingContractId = new veFungibleToken({
-  contractId: "staking-test12.thanhdevtest.testnet",
+  contractId: process.env.STAKING_CONTRACT_ID,
   wallet,
 });
 
 const votingContractId = new VotingContract({
-  contractId: "voting-test8.thanhdevtest.testnet",
+  contractId: process.env.VOTING_CONTRACT_ID,
   wallet,
 });
 
 const faucetContractId = new FaucetContract({
-  contractId: "faucet-test1.thanhdevtest.testnet",
+  contractId: process.env.FAUCET_CONTRACT_ID,
   wallet,
 });
 

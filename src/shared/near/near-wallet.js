@@ -42,7 +42,7 @@ export class Wallet {
       modules: [
         setupNearWallet({iconUrl: nearWalletIconUrl}),
         setupMyNearWallet({ iconUrl: MyNearIconUrl }),
-        setupLedger({ iconUrl: LedgerIconUrl })
+        setupLedger({ iconUrl: LedgerIconUrl }),
       ],
     });
 
