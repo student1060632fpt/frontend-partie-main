@@ -25,3 +25,6 @@ npm run buil
 ```
 4. Xong thì tạo merge request trên github
 5. coi thử vercel báo thành công thì đã lên server, còn ko phải coi bug trên web của vercel
+
+- chiều
+Cần coi lại có cách nào fetch isSignIn khi isSignIn bằng false lại

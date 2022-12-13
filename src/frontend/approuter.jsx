@@ -54,7 +54,6 @@ const AppRouter = (props) => {
     try {
       const isSignedIn = await wallet.startUp();
       const payload = {isSignedIn,contract_id,wallet}
-      console.log(payload);
       dispatch(getSignInWallet(payload))
     } catch (error) {
       console.log({ error });

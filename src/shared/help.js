@@ -12,7 +12,7 @@ const makeRandomId = () => {
     }
     arrResult.push(result)
   }
-  const returnValue = arrResult.join('-')
+  const returnValue = arrResult.join('_')
   return returnValue;
 }
 

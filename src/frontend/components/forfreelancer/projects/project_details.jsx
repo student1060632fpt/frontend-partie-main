@@ -1,5 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { Link, useParams } from "react-router-dom";
 import StickyBox from "react-sticky-box";
 // Import Images
 import {
@@ -18,7 +19,40 @@ import {
   Exp_Icon_06,
 } from "../../imagepath";
 
-const ProjectDetails = (props) => {
+const ProjectDetails = () => {
+  const [jobs, setJobs] = useState({
+    creator_id: "thanhdevtest.testnet",
+    budget: 1000000000000000000,
+    freelancers: {},
+    is_start: false,
+    is_end: false,
+    voting_id: "",
+  });
+  const { isSignedIn, contract_id } = useSelector((state) => state.wallet);
+  const param = useParams();
+  const jobId = param?.id;
+
+  const fetchJobsDetail = async () => {
+    try {
+			console.log({contract_id});
+			let data = await contract_id.get("stakingContractId").show_jobs(jobId);
+			if(!data){
+				return
+			}
+			let jobReturn = Object.entries(data)
+			console.log("jobs: ", jobReturn);
+			setJobs(prev=>({...prev,jobReturn}));
+		} catch (error) {
+			console.log({error});
+		}
+  };
+
+  useEffect(() => {
+    if (isSignedIn) {
+      fetchJobsDetail();
+    }
+  }, [jobId]);
+
   return (
     <>
       {/* Breadcrumb */}
