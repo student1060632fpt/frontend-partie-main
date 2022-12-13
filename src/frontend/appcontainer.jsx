@@ -82,10 +82,7 @@ import BlogDetails from "./components/blog/blog_details";
 
 import PrivacyPolicy from "./components/privacyPages/privacy_policy";
 import TermsCondition from "./components/privacyPages/term_condition";
-import Home2 from "./components/home/index-two";
-import Home3 from "./components/home/index-three";
-import Home4 from "./components/home/index-four";
-import Home5 from "./components/home/index-five";
+
 import DeveloperProfile from "./components/forfreelancer/developerprofile"
 import CompanyProfile from './components/forfreelancer/companyprofile/index'
 import CompanyProject from './components/forfreelancer/companyproject/index'
@@ -204,10 +201,7 @@ const AppContainer = function (props) {
         <Switch>
           {/* home */}
           <Route exact path="/index" component={Home} /> 
-          <Route exact path="/index-two" component={Home2}/>
-          <Route exact path="/index-three" component={Home3}/>
-          <Route exact path="/index-four" component={Home4}/>
-          <Route exact path="/index-five" component={Home5}/>
+
           <Route exact path="/developer-profile" component={DeveloperProfile}/>
           <Route exact path="/company-profile" component={CompanyProfile}/>
           <Route exact path="/post-project" component={PostProject} />  
