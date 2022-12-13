@@ -34,7 +34,7 @@ const Manageprojects = (props) => {
                             to="/post-project"
                             className="btn btn-primary back-btn mb-4"
                             >
-                            Post a Project
+                            Post a Job
                             </Link>
                         </div>
                         </div>
