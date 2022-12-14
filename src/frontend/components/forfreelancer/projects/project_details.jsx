@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import StickyBox from "react-sticky-box";
+import { truncateText } from "../../../../shared/help";
 // Import Images
 import {
   company_img1,
@@ -91,8 +92,7 @@ const ProjectDetails = () => {
             </div>
             <div className="col-lg-2">
               <div className="proposal-amnt text-end">
-                <h3>PAT 17</h3>
-                <p className="mb-0">in 7 days</p>
+                <h3>in 7 days</h3>
               </div>
             </div>
           </div>
@@ -417,7 +417,7 @@ const ProjectDetails = () => {
                       </div>
                       <div className="profile-name">
                         <div className="author-location">
-                          {jobDetail.creator_id}{" "}
+                          {truncateText(jobDetail.creator_id) }{" "}
                           <i className="fas fa-check-circle text-success verified" />
                         </div>
                       </div>
@@ -616,14 +616,8 @@ const ProjectDetails = () => {
                   <form onSubmit={submitGetProject}>
                     <div className="feedback-form">
                       <div className="row">
-                        <div className="col-md-6 form-group">
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Your Price"
-                          />
-                        </div>
-                        <div className="col-md-6 form-group">
+                        
+                        <div className="col-md-12 form-group">
                           <input
                             type="email"
                             className="form-control"

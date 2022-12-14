@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { truncateText } from "../../../shared/help";
 import { Logo, Img_04 } from "../imagepath";
 
 const HeaderUserAccountDetail = () => {
@@ -42,7 +43,7 @@ const HeaderUserAccountDetail = () => {
           <span className="user-img">
             <img src={Img_04} alt="" />
           </span>
-          <span>{wallet.accountId}</span>
+          <span> {truncateText(wallet.accountId)}</span>
         </Link>
         <div
           id="checkshow"

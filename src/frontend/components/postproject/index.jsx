@@ -113,7 +113,7 @@ const PostProject = (props) => {
                         <div className="form-group mt-3" id="price_id">
                           <div className="input-group">
                             <div className="input-group-prepend">
-                              <span className="input-group-text">$</span>
+                              <span className="input-group-text">PAT</span>
                             </div>
                             <input
                               type="number"

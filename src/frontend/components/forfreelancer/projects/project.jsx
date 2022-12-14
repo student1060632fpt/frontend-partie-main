@@ -2,7 +2,7 @@ import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { daysRemaining } from "../../../../shared/help";
+import { daysRemaining, truncateText } from "../../../../shared/help";
 
 // Import Images
 // Import Images
@@ -54,7 +54,7 @@ const Projects = (props) => {
                 </div>
                 <div className="profile-name">
                   <div className="author-location">
-                    {jobItem[1].creator_id} 
+                    {truncateText(jobItem[1].creator_id,20)} 
                     <i className="fas fa-check-circle text-success verified" />
                   </div>
                 </div>

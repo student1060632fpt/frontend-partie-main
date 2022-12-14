@@ -24,4 +24,12 @@ const  daysRemaining = (time)=> {
 }
 
 
-export { makeRandomId, daysRemaining }
+//Ellipsis text
+function truncateText(input="Lorem insum", length = 30) {
+  if (input.length > length) {
+     return input.substring(0, length) + '...';
+  }
+  return input;
+};
+
+export { makeRandomId,truncateText, daysRemaining }

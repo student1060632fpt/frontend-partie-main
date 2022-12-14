@@ -28,3 +28,27 @@ npm run buil
 
 - chiều
 Cần coi lại có cách nào fetch isSignIn khi isSignIn bằng false lại
+
+# to do 14/12
+viết lại 2 object
+```
+{
+    "creator_id": "dollnguyen12345.testnet",
+    "budget": 11000000000000000000,
+    "freelancers": {
+        "a2487c1136b5a6c7691ae00745eb711f954d9af6193880568a90c668addbc899": {
+            "creator": [
+                true,
+                true
+            ],
+            "freelancer": [
+                true,
+                true
+            ]
+        }
+    },
+    "is_start": true,
+    "is_end": true,
+    "voting_id": ""
+}
+```

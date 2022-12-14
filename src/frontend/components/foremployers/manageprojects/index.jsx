@@ -20,11 +20,12 @@ const Manageprojects = (props) => {
       }
       let data = await contract_id.get("stakingContractId").get_list_jobs();
       const myListProject = Object.entries(data).filter(
-        (project) => project[1].creator_id === wallet.accountId
+        (project) => {
+          console.log(project[1]?.creator_id, "project[1]?.creator_id = ",wallet.accountId);
+          return project[1]?.creator_id === wallet.accountId
+        }
       );
       setListProject(myListProject);
-      console.log("jobs: ", Object.entries(data));
-      console.log("user address", wallet.accountId);
     } catch (error) {
       console.log(error);
     }
@@ -42,6 +43,10 @@ const Manageprojects = (props) => {
   const renderListProject = () => {
     return listProject.map((project) => {
       if (!!project[1].is_start) {
+        const freelancerHired = Object.entries(project[1].freelancers).filter(freelancer=> {
+          console.log({freelancer},"freelancer[1].creator[0]");
+          return freelancer[1]?.creator[0]
+        })
         return (
           <div className="my-projects-list">
             <div className="row">
@@ -109,7 +114,7 @@ const Manageprojects = (props) => {
                     <div className="prj-proposal-count text-center hired">
                       <h3>Hired</h3>
                       <img src={Developer_01} alt="" className="img-fluid" />
-                      <p className="mb-0">Hannah Finn</p>
+                      <p className="mb-0">{freelancerHired}</p>
                     </div>
                   </div>
                 </div>
