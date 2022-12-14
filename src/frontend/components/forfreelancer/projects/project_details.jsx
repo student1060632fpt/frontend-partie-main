@@ -32,7 +32,6 @@ const ProjectDetails = () => {
   const param = useParams();
   const jobId = param?.id;
 
-  console.log({ jobId, contract_id });
   const fetchJobsDetail = async () => {
     try {
       let jobReturn = await contract_id
