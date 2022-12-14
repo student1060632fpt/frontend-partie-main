@@ -28,7 +28,7 @@ const ftContractId = new FungibleToken({
 });
 
 const stakingContractId = new veFungibleToken({
-  contractId: "staking-test12.thanhdevtest.testnet",
+  contractId: "staking-test16.thanhdevtest.testnet",
   wallet,
 });
 

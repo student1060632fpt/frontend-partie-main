@@ -43,7 +43,15 @@ const Staking = (props) => {
 
 
     async function submitStake(amount) {
-        await contract_id.get("ftContractId").ft_transfer_call("staking-test12.thanhdevtest.testnet", amount.toString(), "staking");
+        const dataInput = {
+            purpose: "staking",
+            para: "1"
+        };
+        const stringData = JSON.stringify(dataInput);
+        console.log("stringData ", stringData);
+        const rp = stringData.replace(/["]+/g, '\"');
+        console.log("rp: ", rp);
+        await contract_id.get("ftContractId").ft_transfer_call("staking-test16.thanhdevtest.testnet", amount.toString(), rp);
     }
 
     async function submitUnStake(amount_stake) {
@@ -120,7 +128,7 @@ const Staking = (props) => {
                                     </div>
                                     <div className="border" style={{width:"50%"}}> 
                                         <span>APR</span>
-                                        <p>3.62%</p>
+                                        <p>36.2%</p>
                                     </div>
                                 </div>
                                 
