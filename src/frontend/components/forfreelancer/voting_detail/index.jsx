@@ -33,6 +33,12 @@ const VotingDetail = (props) => {
         "v2":0
     }
 
+    let signerVotedDefault = {
+        option_id: "",
+        quantity: 0,
+        is_claimed: false
+    }
+
     const { contract_id, wallet, isSignedIn } = useSelector(
         (state) => state.wallet
       );
@@ -41,7 +47,7 @@ const VotingDetail = (props) => {
     const [votingDetail, setVotingDetail] = useState(defaultData);
     const [value, setValue] = useState(null);
     const [votes, setVotes] = useState({});
-    const [signerVoted, setSignerVoted] = useState({})
+    const [signerVoted, setSignerVoted] = useState(signerVotedDefault)
 
     const location = useLocation();
     const voting_id = location.search.split("?id=")[1];
@@ -79,7 +85,7 @@ const VotingDetail = (props) => {
     }
 
     async function submitClaimReward() {
-        await contract_id.get("votingContractId").claim_reward(voting_id);
+        await contract_id.get("votingContractId").claim_reward();
     }
 
     function calcReward(){
@@ -164,10 +170,17 @@ const VotingDetail = (props) => {
                                     <div>Your Voted</div>
                                     <div>{signerVoted.quantity?signerVoted.quantity/(10**18):0 }</div>
                                 </div>
+                                
                                 <div className="d-flex justify-content-between align-items-center">
                                     <div>Amount</div>
                                     <div>{calcReward()}</div>
                                 </div>
+
+                                <div className="d-flex justify-content-between align-items-center">
+                                    <div>Is Claimed</div>
+                                    <div>{signerVoted.is_claimed.toString()}</div>
+                                </div>
+
                                 <button onClick={() => submitClaimReward()}>Claim</button>
                             </div>
                         </div>
