@@ -7980,7 +7980,6 @@ label.file-upload.image-btn {
 	margin-left: auto;
 	-ms-flex: 0 0 200px;
 	flex: 0 0 200px;
-	max-width: 200px;
 }
 
 .provider-img {
@@ -23185,4 +23184,22 @@ span.badge.badge-pill.badge-design {
 	.testimonial-two .owl-item.active {
 		width: 296px !important;
 	}
+
+}
+
+
+/* staking */
+.staking {
+	display: flex;
+	/* align-items: center; */
+	justify-content: space-evenly;
+}
+
+.staking .overview{
+	display: flex;
+	/* align-items: center; */
+	/* justify-content: space-evenly; */
+}
+.flex {
+	display: flex;
 }

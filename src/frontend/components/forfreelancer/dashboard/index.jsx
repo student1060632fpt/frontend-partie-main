@@ -93,7 +93,7 @@ const FreelancerDashboard = (props) => {
           }
         },
         colors: ['#7B46BE', '#FA6CA4', '#FACD3A', '#24C0DC'],
-        labels: ['Applied Jobs', 'Messenger', 'Facebook', 'LinkedIn'],
+        labels: ['Applied Projects', 'Messenger', 'Facebook', 'LinkedIn'],
         legend: {
           show: false,
           floating: true,
@@ -151,7 +151,7 @@ const FreelancerDashboard = (props) => {
                     <div className="col-md-6 col-lg-4">
                       <div className="dash-widget">
                         <div className="dash-info">
-                          <div className="dash-widget-info">Completed Jobs</div>
+                          <div className="dash-widget-info">Completed Projects</div>
                           <div className="dash-widget-count">30</div>
                         </div>
                         <div className="dash-widget-more">
@@ -223,7 +223,7 @@ const FreelancerDashboard = (props) => {
                             <li>
                               <span>
                                 <i className="fas fa-circle text-violet me-1" />{" "}
-                                Applied Jobs
+                                Applied Projects
                               </span>{" "}
                               <span className="sta-count">30</span>
                             </li>
@@ -323,7 +323,7 @@ const FreelancerDashboard = (props) => {
                               <ul className="list-details">
                                 <li>
                                   <div className="slot">
-                                    <p>Job Type</p>
+                                    <p>Project Type</p>
                                     <h5>Hourly</h5>
                                   </div>
                                 </li>
@@ -358,7 +358,7 @@ const FreelancerDashboard = (props) => {
                               <ul className="list-details">
                                 <li>
                                   <div className="slot">
-                                    <p>Job Type</p>
+                                    <p>Project Type</p>
                                     <h5>Hourly</h5>
                                   </div>
                                 </li>
@@ -393,7 +393,7 @@ const FreelancerDashboard = (props) => {
                               <ul className="list-details">
                                 <li>
                                   <div className="slot">
-                                    <p>Job Type</p>
+                                    <p>Project Type</p>
                                     <h5>Hourly</h5>
                                   </div>
                                 </li>

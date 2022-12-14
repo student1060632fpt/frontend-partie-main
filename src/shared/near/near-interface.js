@@ -1,3 +1,5 @@
+import { throws } from "assert";
+import {utils} from "near-api-js";
 // ABI
 
 export class FungibleToken{
@@ -57,6 +59,17 @@ export class veFungibleToken{
         })
     }
 
+    async withdraw(amount_stake){
+        return await this.wallet.callMethod({
+            contractId: this.contractId,
+            method: "withdraw",
+            args: {
+                amount_stake: amount_stake,
+            },
+            deposit: 1
+        })
+    }
+
     async ft_balance_of(account_id){
         return await this.wallet.viewMethod({
             contractId: this.contractId,
@@ -96,6 +109,80 @@ export class veFungibleToken{
             args: {},
         })
     }
+    async show_jobs(jobs_id){
+        return await this.wallet.viewMethod({
+            contractId: this.contractId,
+            method: "show_jobs",
+            args: {
+                jobs_id
+            },
+        })
+    }
+    async get_jobs(job_id){
+        return await this.wallet.callMethod({
+            contractId: this.contractId,
+            method: "get_jobs",
+            args: {
+                job_id: job_id,
+            },
+            deposit: 1
+        })
+    }
+
+    async start_jobs(job_id, freelancer_id){
+        return await this.wallet.callMethod({
+            contractId: this.contractId,
+            method: "start_jobs",
+            args: {
+                job_id: job_id,
+                freelancer_id: freelancer_id
+            },
+            deposit: 1
+        })
+    }
+
+    async complete_jobs(job_id, choice){
+        return await this.wallet.callMethod({
+            contractId: this.contractId,
+            method: "complete_jobs",
+            args: {
+                job_id: job_id,
+                choice: choice
+            },
+            deposit: 1
+        })
+    }
+
+    async end_jobs(job_id, freelancer_id){
+        return await this.wallet.callMethod({
+            contractId: this.contractId,
+            method: "end_jobs",
+            args: {
+                job_id: job_id,
+                freelancer_id: freelancer_id
+            },
+            deposit: 1
+        })
+    }
+
+    async create_voting(job_id, freelancer_id, question, variants, start, end){
+        return await this.wallet.callMethod({
+            contractId: this.contractId,
+            method: "create_voting",
+            args: {
+                job_id: job_id,
+                freelancer_id: freelancer_id,
+                question: question, 
+                variants: variants,
+                start: start,
+                end: end, 
+
+            },
+            deposit: 1
+        })
+    }
+
+
 
 }
 
@@ -131,6 +218,17 @@ export class VotingContract{
             },
         })
     }
+
+    async claim_reward(poll_id){
+        return await this.wallet.callMethod({
+            contractId: this.contractId,
+            method: "claim_reward",
+            args: {
+                poll_id: poll_id,
+            },
+        })
+    }
+    
 }
 
 export class FaucetContract{

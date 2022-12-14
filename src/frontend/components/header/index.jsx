@@ -181,6 +181,18 @@ const Header = (props) => {
 
               <li
                 className={`has-submenu ${
+                  pathname.includes("staking")
+                    ? "active"
+                    : ""
+                }`}
+              >
+              <Link to="/staking">
+                  Staking 
+              </Link>
+              </li>
+
+              <li
+                className={`has-submenu ${
                   pathname === "developer" ||
                   pathname === "developer-details" ||
                   pathname === "dashboard" ||
@@ -276,7 +288,7 @@ const Header = (props) => {
                     <li
                       className={pathname === "manage-projects" ? "active" : ""}
                     >
-                      <Link to="/manage-projects">Jobs</Link>
+                      <Link to="/manage-projects">Manage Projects</Link>
                     </li>
                     <li
                       className={
@@ -367,6 +379,7 @@ const Header = (props) => {
                   pathname === "freelancer-milestones" ||
                   pathname === "freelancer-task" ||
                   pathname === "freelancer-files" ||
+                  pathname === "voting" ||
                   pathname === "freelancer-payment"
                     ? "active"
                     : ""
@@ -433,6 +446,10 @@ const Header = (props) => {
                     </li>
                     <li>
                       <Link to="/developer-profile">My Profile</Link>
+                    </li>
+
+                    <li>
+                      <Link to="/voting">Voting</Link>
                     </li>
                     <li
                       className={

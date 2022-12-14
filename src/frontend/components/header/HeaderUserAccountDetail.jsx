@@ -21,6 +21,9 @@ const HeaderUserAccountDetail = () => {
     setBalanceFt(ft);
     setBalanceVeFt(veFt);
   }
+  async function handleFaucet() {
+    await contract_id.get("faucetContractId").ft_request_funds("partie-test2.thanhdevtest.testnet", wallet.accountId, "10000000000000000000000");
+  }
   useEffect(() => {
     fetchBalance()
   }, [])
@@ -53,6 +56,9 @@ const HeaderUserAccountDetail = () => {
           <a className="dropdown-item" href={'https://testnet.nearblocks.io/address/' + wallet.accountId}>
             <i className="material-icons">monetization_on</i> vePAT: {balanceVeFt/(10**18)}
           </a>
+          <button className="dropdown-item" onClick={() => handleFaucet()}>
+            <i className="material-icons">monetization_on</i> Faucet PAT
+          </button>
           <Link className="dropdown-item" to="/user-account-details">
             <i className="material-icons">verified_user</i> View profile
           </Link>
@@ -77,6 +83,7 @@ const HeaderUserAccountDetail = () => {
         </div>
       </li>
       {/* /User Menu */}
+
       <li>
         <Link to="/post-project" className="login-btn">
           Post a Project{" "}

@@ -2,6 +2,7 @@ import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { daysRemaining } from "../../../../shared/help";
 
 // Import Images
 // Import Images
@@ -20,6 +21,7 @@ const Projects = (props) => {
   );
   const fetJobs = async () => {
     try {
+      console.log({contract_id});
       let data = await contract_id.get("stakingContractId").get_list_jobs();
       setJobs(Object.entries(data));
       console.log("jobs: ", Object.entries(data));
@@ -29,13 +31,12 @@ const Projects = (props) => {
     }
   };
   useEffect(() => {
+    if(!contract_id){
+      return
+    }
     fetJobs();
   }, [isSignedIn]);
-  const  daysRemaining = (time)=> {
-    var eventdate = moment.unix(time);
-    var todaysdate = moment();
-    return eventdate.diff(todaysdate, 'days');
-}
+
   const renderListJob = () => {
     return jobs.map((jobItem, index) => {
       return (
@@ -108,7 +109,7 @@ const Projects = (props) => {
               </div>
             </div>
             <div className="cart-hover">
-              <Link to="/project-details" className="btn-cart" tabIndex={-1}>
+              <Link to={`/project-details/${jobItem[0]}`} className="btn-cart" tabIndex={-1}>
                 Bid Now
               </Link>
             </div>
@@ -124,14 +125,14 @@ const Projects = (props) => {
         <div className="container">
           <div className="row align-items-center inner-banner">
             <div className="col-md-12 col-12 text-center">
-              <h2 className="breadcrumb-title">Jobs</h2>
+              <h2 className="breadcrumb-title">Projects</h2>
               <nav aria-label="breadcrumb" className="page-breadcrumb">
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item">
                     <Link to="/index">Home</Link>
                   </li>
                   <li className="breadcrumb-item active" aria-current="page">
-                    Jobs
+                    Projects
                   </li>
                 </ol>
               </nav>
