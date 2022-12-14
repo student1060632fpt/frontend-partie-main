@@ -1,11 +1,47 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { Link, useLocation, useParams } from "react-router-dom";
 import StickyBox from "react-sticky-box";
 import { Avatar_1,Avatar_2,Avatar_3,Flags_en,Logo_01 } from "../../imagepath";
 import { Sidebar } from '../sidebar';
     
-const Projectproposal = (props) => {  
- 
+const Projectproposal = () => {  
+  const [project, setProject] = useState({
+    creator_id: "dollnguyen.testnet",
+    budget: 1000,
+    freelancers: {},
+    is_start: false,
+    is_end: false,
+    voting_id: "",
+  })
+ const param = useParams();
+ const projectId = param?.id;
+
+ const { isSignedIn, contract_id } = useSelector((state) => state.wallet);
+
+
+ const fetchProjectsDetail = async () => {
+  try {
+    let jobReturn = await contract_id
+      .get("stakingContractId")
+      .show_jobs(projectId);
+    if (!jobReturn) {
+      return;
+    }
+    console.log("jobs: ", jobReturn);
+    setProject((prev) => ({ ...prev, ...jobReturn }));
+  } catch (error) {
+    console.log({ error });
+  }
+};
+
+useEffect(() => {
+  if (!isSignedIn || !contract_id) {
+    return;
+  }
+  fetchProjectsDetail();
+}, [isSignedIn]);
+
   return (
     <>
   <div className="breadcrumb-bar">
@@ -42,35 +78,6 @@ const Projectproposal = (props) => {
           <div className="page-title">
             <h3>Proposals</h3>
           </div>
-          <nav className="user-tabs mb-4">
-            <ul className="nav nav-tabs nav-tabs-bottom nav-justified">
-              <li className="nav-item">
-                <Link className="nav-link" to="/manage-projects">
-                  All Projects
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/pending-projects">
-                  Pending Projects
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/ongoing-projects">
-                  Ongoing Projects
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/completed-projects">
-                  Completed Projects
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/cancelled-projects">
-                  Cancelled Projects
-                </Link>
-              </li>
-            </ul>
-          </nav>
           {/* project list */}
           <div className="my-projects-list">
             <div className="row">
@@ -79,7 +86,7 @@ const Projectproposal = (props) => {
                   <div className="card-body">
                     <div className="projects-details align-items-center">
                       <div className="project-info">
-                        <span>Dreamguystech</span>
+                        <span>{project.creator_id}</span>
                         <h2>Website Designer Required For Directory Theme</h2>
                         <div className="customer-info">
                           <ul className="list-details">
@@ -113,7 +120,7 @@ const Projectproposal = (props) => {
                       </div>
                       <div className="project-hire-info">
                         <div className="projects-amount proposals">
-                          <h3>$500.00</h3>
+                          <h3>PAT {project.budget}</h3>
                           <h5>in 12 Days</h5>
                         </div>
                       </div>

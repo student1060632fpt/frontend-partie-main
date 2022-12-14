@@ -1,3 +1,5 @@
+import moment from "moment";
+
 //FUNTION RANDOM TEXT
 const makeRandomId = () => {
   let result = '';
@@ -15,6 +17,11 @@ const makeRandomId = () => {
   const returnValue = arrResult.join('_')
   return returnValue;
 }
+const  daysRemaining = (time)=> {
+  var eventdate = moment.unix(time);
+  var todaysdate = moment();
+  return eventdate.diff(todaysdate, 'days');
+}
 
 
-export { makeRandomId }
+export { makeRandomId, daysRemaining }

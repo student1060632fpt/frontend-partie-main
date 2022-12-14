@@ -78,6 +78,31 @@ const VotingDetail = (props) => {
         await contract_id.get("votingContractId").vote(voting_id, votes);
     }
 
+    async function submitClaimReward() {
+        await contract_id.get("votingContractId").claim_reward(voting_id);
+    }
+
+    function calcReward(){
+        if (signerVoted){
+            if((votingDetail.results.variants.v1?votingDetail.results.variants.v1:0) > (votingDetail.results.variants.v2?votingDetail.results.variants.v2:0)){
+                if(signerVoted.option_id=="v1") {
+                    let reward = (signerVoted.quantity/votingDetail.results.variants.v1)*votingDetail.poll.budget/(10**18);
+                    console.log("reward", reward);
+                    return reward;
+                }
+                else return 0;
+            }
+            else{
+                if(signerVoted.option_id=="v2") {
+                    let reward = (signerVoted.quantity/votingDetail.results.variants.v2)*votingDetail.poll.budget/(10**18);
+                    return reward;
+                }
+                else return 0;
+            }
+        }
+        return 0;
+    }
+
     useEffect(() => {
         fetchVoting();
         document.body.className = 'dashboard-page';
@@ -108,6 +133,10 @@ const VotingDetail = (props) => {
                                         <div>{(new Date(votingDetail.poll.end/(10**6))).toGMTString()}</div>
                                     </div>
                                     <div className="d-flex justify-content-between align-items-center">
+                                        <div>Reward Shared</div>
+                                        <div>{votingDetail.poll.budget/(10**18)} PAT</div>
+                                    </div>
+                                    <div className="d-flex justify-content-between align-items-center">
                                         <div>Total Voted</div>
                                         <div>{votingDetail.results.total_voted_stake/(10**18)}</div>
                                     </div>
@@ -115,16 +144,36 @@ const VotingDetail = (props) => {
                             </div>
                             <div className="border rounded"> 
                                 <div className="border-bottom">Current Result</div>
-                                    <div className="d-flex justify-content-between align-items-center">
-                                        <div>Yes</div>
-                                        <div>{votingDetail.results.variants.v1 ? votingDetail.results.variants.v1/(10**18) : 0}</div>
-                                    </div>
-                                    <div className="d-flex justify-content-between align-items-center">
-                                        <div>No</div>
-                                        <div>{votingDetail.results.variants.v2 ? votingDetail.results.variants.v2/(10**18) : 0}</div>
-                                    </div>
+                                <div className="d-flex justify-content-between align-items-center">
+                                    <div>V1</div>
+                                    <div>{votingDetail.results.variants.v1 ? votingDetail.results.variants.v1/(10**18) : 0}</div>
+                                </div>
+                                <div className="d-flex justify-content-between align-items-center">
+                                    <div>V2</div>
+                                    <div>{votingDetail.results.variants.v2 ? votingDetail.results.variants.v2/(10**18) : 0}</div>
+                                </div>
+                            </div>
+
+                            <div className="border rounded"> 
+                                <div className="border-bottom">Your Reward</div>
+                                <div className="d-flex justify-content-between align-items-center">
+                                    <div>Your Voted</div>
+                                    <div>{signerVoted.option_id?signerVoted.option_id:"you haven't joined yet" }</div>
+                                </div>
+                                <div className="d-flex justify-content-between align-items-center">
+                                    <div>Your Voted</div>
+                                    <div>{signerVoted.quantity?signerVoted.quantity/(10**18):0 }</div>
+                                </div>
+                                <div className="d-flex justify-content-between align-items-center">
+                                    <div>Amount</div>
+                                    <div>{calcReward()}</div>
+                                </div>
+                                <button onClick={() => submitClaimReward()}>Claim</button>
                             </div>
                         </div>
+
+                            
+                            
                         {/* /sidebar */}
                     <div className="col-xl-9 col-md-8">
                     <div className="page-title">
@@ -203,6 +252,7 @@ const VotingDetail = (props) => {
                 </div>
                 </div>
             </div>
+
         </>
       )
   

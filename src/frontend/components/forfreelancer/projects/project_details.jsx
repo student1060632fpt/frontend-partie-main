@@ -20,9 +20,9 @@ import {
 } from "../../imagepath";
 
 const ProjectDetails = () => {
-  const [jobs, setJobs] = useState({
-    creator_id: "thanhdevtest.testnet",
-    budget: 1000000000000000000,
+  const [jobDetail, setjobDetail] = useState({
+    creator_id: "dollnguyen.testnet",
+    budget: 1000,
     freelancers: {},
     is_start: false,
     is_end: false,
@@ -34,25 +34,82 @@ const ProjectDetails = () => {
 
   const fetchJobsDetail = async () => {
     try {
-			console.log({contract_id});
-			let data = await contract_id.get("stakingContractId").show_jobs(jobId);
-			if(!data){
-				return
-			}
-			let jobReturn = Object.entries(data)
-			console.log("jobs: ", jobReturn);
-			setJobs(prev=>({...prev,jobReturn}));
-		} catch (error) {
-			console.log({error});
-		}
+      let jobReturn = await contract_id
+        .get("stakingContractId")
+        .show_jobs(jobId);
+      if (!jobReturn) {
+        return;
+      }
+      console.log("jobs: ", jobReturn);
+      setjobDetail((prev) => ({ ...prev, ...jobReturn }));
+    } catch (error) {
+      console.log({ error });
+    }
   };
 
   useEffect(() => {
-    if (isSignedIn) {
-      fetchJobsDetail();
+    if (!isSignedIn || !contract_id) {
+      return;
     }
-  }, [jobId]);
+    fetchJobsDetail();
+  }, [isSignedIn]);
+  const renderJobProposal = () => {
+    if (!jobDetail.freelancers) {
+      return <></>;
+    }
+    return Object.entries(jobDetail.freelancers).map((proposalDetail,index) => {
+      return (
+        <div className="bids-card" key={index}>
+          <div className="row align-items-center">
+            <div className="col-lg-2">
+              <div className="author-img-wrap">
+                <a href="#">
+                  <img className="img-fluid" alt="" src={Img_01} />
+                </a>
+              </div>
+            </div>
+            <div className="col-lg-8">
+              <div className="author-detail">
+                <h4>
+                  <a href="#">{proposalDetail[0]}</a>{" "}
+                  <img src={Flags_us} height={16} alt="Lang" />
+                </h4>
+                <div className="rating">
+                  <span className="average-rating">4.3</span>
+                  <i className="fas fa-star filled" />
+                  <i className="fas fa-star filled" />
+                  <i className="fas fa-star filled" />
+                  <i className="fas fa-star filled" />
+                  <i className="fas fa-star" />
+                </div>
+                <p className="mb-0">
+                  Look forward to hearing from you, I am a good designer and
+                  developer. I can handle your daily bases task with no extra
+                  effort. Please contact me as I am jobless nowadays.
+                </p>
+              </div>
+            </div>
+            <div className="col-lg-2">
+              <div className="proposal-amnt text-end">
+                <h3>PAT 17</h3>
+                <p className="mb-0">in 7 days</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    });
+  };
 
+  const submitGetProject = async (e) => {
+    e.preventDefault();
+    try {
+      await contract_id.get("stakingContractId").get_jobs(jobId);
+      console.log("Success get job");
+    } catch (error) {
+      console.log({ error });
+    }
+  };
   return (
     <>
       {/* Breadcrumb */}
@@ -89,7 +146,7 @@ const ProjectDetails = () => {
                       <ul className="profile-right">
                         <li>
                           <div className="amt-hr">
-                            $20.00 <p>( FIXED )</p>
+                            PAT {jobDetail.budget} <p>( FIXED )</p>
                           </div>
                         </li>
                       </ul>
@@ -100,7 +157,10 @@ const ProjectDetails = () => {
                         <a
                           data-bs-toggle="modal"
                           href="#file"
-                          className="btn bid-btn"
+                          className={`btn bid-btn ${
+                            jobDetail.isDisabled && "disabled"
+                          }`}
+                          aria-disabled={jobDetail.isDisabled}
                         >
                           Send Proposal{" "}
                           <i className="fas fa-long-arrow-alt-right" />
@@ -115,13 +175,13 @@ const ProjectDetails = () => {
           <div className="row">
             <div className="col-lg-8 col-md-12">
               <div className="pro-view">
-                {/* Job Detail */}
+                {/* Project Detail */}
                 <div className="post-widget">
                   <div className="pro-content">
                     <div className="row">
                       <div className="col-12 col-sm-6 col-md-3">
                         <div className="pro-post job-type">
-                          <p>Job Expiry </p>
+                          <p>Project Expiry </p>
                           <h6>4 Days Left</h6>
                         </div>
                       </div>
@@ -149,7 +209,7 @@ const ProjectDetails = () => {
                     </div>
                   </div>
                 </div>
-                {/* /Job Detail */}
+                {/* /Project Detail */}
                 <div className="pro-post widget-box exp-widget pb-0">
                   <div className="pro-content pt-0">
                     <div className="row">
@@ -184,7 +244,7 @@ const ProjectDetails = () => {
                         <div className="exp-detail">
                           <img className="img-fluid" alt="" src={Exp_Icon_04} />
                           <div className="exp-info">
-                            <p>Job Type</p>
+                            <p>Project Type</p>
                             <h5>Remote Job</h5>
                           </div>
                         </div>
@@ -237,9 +297,9 @@ const ProjectDetails = () => {
                   </div>
                 </div>
                 {/* /Senior Animator  */}
-                {/* Job Activity  */}
+                {/* Project Activity  */}
                 <div className="pro-post project-widget widget-box">
-                  <h3 className="pro-title">Activity of the Job</h3>
+                  <h3 className="pro-title">Activity</h3>
                   <div className="pro-content">
                     <div className="mb-0">
                       <ul className="activity-list clearfix">
@@ -278,7 +338,7 @@ const ProjectDetails = () => {
                     </div>
                   </div>
                 </div>
-                {/* /Job Activity  */}
+                {/* /Project Activity  */}
                 {/* Skills Required  */}
                 <div className="pro-post project-widget widget-box">
                   <h3 className="pro-title">Skills Required</h3>
@@ -318,147 +378,23 @@ const ProjectDetails = () => {
                   </div>
                 </div>
                 {/* /Skills Required  */}
+                {/* Proposal  */}
                 <div className="pro-post widget-box">
                   <h3 className="pro-title">Project Proposals</h3>
                   <div className="average-bids mt-4">
                     <p>
-                      <span className="text-highlight">18 freelancers</span> are
-                      bidding on average{" "}
+                      <span className="text-highlight">
+                        {Object.entries(jobDetail.freelancers).length}{" "}
+                        freelancers
+                      </span>{" "}
+                      are bidding on average{" "}
                       <span className="text-highlight">$17.00</span> for this
                       job
                     </p>
                   </div>
-                  <div className="proposal-cards">
-                    {/* project proposal  */}
-                    <div className="bids-card">
-                      <div className="row align-items-center">
-                        <div className="col-lg-2">
-                          <div className="author-img-wrap">
-                            <a href="#">
-                              <img className="img-fluid" alt="" src={Img_01} />
-                            </a>
-                          </div>
-                        </div>
-                        <div className="col-lg-8">
-                          <div className="author-detail">
-                            <h4>
-                              <a href="#">George Wells</a>{" "}
-                              <img src={Flags_us} height={16} alt="Lang" />
-                            </h4>
-                            <div className="rating">
-                              <span className="average-rating">4.3</span>
-                              <i className="fas fa-star filled" />
-                              <i className="fas fa-star filled" />
-                              <i className="fas fa-star filled" />
-                              <i className="fas fa-star filled" />
-                              <i className="fas fa-star" />
-                            </div>
-                            <p className="mb-0">
-                              Look forward to hearing from you, I am a good
-                              designer and developer. I can handle your daily
-                              bases task with no extra effort. Please contact me
-                              as I am jobless nowadays.
-                            </p>
-                          </div>
-                        </div>
-                        <div className="col-lg-2">
-                          <div className="proposal-amnt text-end">
-                            <h3>$17.00</h3>
-                            <p className="mb-0">in 7 days</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    {/* /project proposal  */}
-                    {/* project proposal  */}
-                    <div className="bids-card">
-                      <div className="row align-items-center">
-                        <div className="col-lg-2">
-                          <div className="author-img-wrap">
-                            <a href="#">
-                              <img className="img-fluid" alt="" src={Img_02} />
-                            </a>
-                          </div>
-                        </div>
-                        <div className="col-lg-8">
-                          <div className="author-detail">
-                            <h4>
-                              <a href="#">Tony Ingle</a>{" "}
-                              <img src={Flags_es} height={16} alt="Lang" />
-                            </h4>
-                            <div className="rating">
-                              <span className="average-rating">4.6</span>
-                              <i className="fas fa-star filled" />
-                              <i className="fas fa-star filled" />
-                              <i className="fas fa-star filled" />
-                              <i className="fas fa-star filled" />
-                              <i className="fas fa-star" />
-                            </div>
-                            <p className="mb-0">
-                              Lorem Ipsum is simply dummy text of the printing
-                              and typesetting industry. Lorem Ipsum has been the
-                              industry's standard dummy text ever since the
-                              1500s, when an unknown.
-                            </p>
-                          </div>
-                        </div>
-                        <div className="col-lg-2">
-                          <div className="proposal-amnt text-end">
-                            <h3>$22.00</h3>
-                            <p className="mb-0">in 13 days</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    {/* /project proposal  */}
-                    {/* project proposal  */}
-                    <div className="bids-card">
-                      <div className="row align-items-center">
-                        <div className="col-lg-2">
-                          <div className="author-img-wrap">
-                            <a href="#">
-                              <img className="img-fluid" alt="" src={Img_03} />
-                            </a>
-                          </div>
-                        </div>
-                        <div className="col-lg-8">
-                          <div className="author-detail">
-                            <h4>
-                              <a href="#">James Douglas</a>{" "}
-                              <img src={Flags_de} height={16} alt="Lang" />
-                            </h4>
-                            <div className="rating">
-                              <span className="average-rating">3.8</span>
-                              <i className="fas fa-star filled" />
-                              <i className="fas fa-star filled" />
-                              <i className="fas fa-star filled" />
-                              <i className="fas fa-star" />
-                              <i className="fas fa-star" />
-                            </div>
-                            <p className="mb-0">
-                              Contrary to popular belief, Lorem Ipsum is not
-                              simply random text. It has roots in a piece of
-                              classical Latin literature from 45 BC, making it
-                              over 2000 years old. Richard McClintock
-                            </p>
-                          </div>
-                        </div>
-                        <div className="col-lg-2">
-                          <div className="proposal-amnt text-end">
-                            <h3>$19.00</h3>
-                            <p className="mb-0">in 18 days</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    {/* /project proposal  */}
-                  </div>
-                  <div className="proposal-btns mt-3">
-                    <Link to="/view-proposals" className="pro-btn">
-                      View all 18 Propsals
-                    </Link>
-                  </div>
+                  <div className="proposal-cards">{renderJobProposal()}</div>
                 </div>
+                {/* Proposal  */}
               </div>
             </div>
             {/* Blog Sidebar */}
@@ -481,7 +417,7 @@ const ProjectDetails = () => {
                       </div>
                       <div className="profile-name">
                         <div className="author-location">
-                          Amaze Tech{" "}
+                          {jobDetail.creator_id}{" "}
                           <i className="fas fa-check-circle text-success verified" />
                         </div>
                       </div>
@@ -677,7 +613,7 @@ const ProjectDetails = () => {
               </div>
               <div className="modal-body">
                 <div className="modal-info">
-                  <form>
+                  <form onSubmit={submitGetProject}>
                     <div className="feedback-form">
                       <div className="row">
                         <div className="col-md-6 form-group">

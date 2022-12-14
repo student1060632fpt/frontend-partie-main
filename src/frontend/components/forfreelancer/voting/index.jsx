@@ -13,6 +13,46 @@ const Voting = (props) => {
     const [loading, setLoading] = useState(false);
     const [poll, setPoll] = useState([]);
 
+
+    ///////////////////////////////// Create Voting Test /////////////////////////////////
+    const [value, setValue] = useState({
+        jobsId: "",
+        freelancerId:"",
+        question: "",
+        // variants:"",
+        start: 0,
+        end: 0,
+
+      });
+      const onChangeValue = (e) => {
+        e.persist();
+        if(!e?.target?.value && !e?.target?.name){
+          return 
+        }
+        setValue((prev) => ({
+          ...prev,
+          [e?.target?.name]: e?.target?.value,
+        }));
+    };
+
+    const onSubmitCreate = async (event) => {
+        event.preventDefault();
+        console.log("value", value);
+        const variants = {
+            "v1":"creator",
+            "v2":"freelancer",
+        }
+        await contract_id.get("stakingContractId").create_voting(value.jobsId, value.freelancerId, value.question, variants, Number(value.start), Number(value.end));
+      };
+
+
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
     useEffect(() => {
     const fetchVotingDetail = async () => {
         setLoading(true);
@@ -25,6 +65,7 @@ const Voting = (props) => {
       document.body.className = 'dashboard-page';
       return () => { document.body.className = ''; }
     }, [isSignedIn]);  
+    
         
   return (
         <>
@@ -44,6 +85,15 @@ const Voting = (props) => {
                         <div className="row">
                         <div className="col-md-6">
                             <h3>Manage Proposals</h3>
+                        </div>
+                        <div className="col-md-6">
+                            <a
+                                className="btn bid-btn"
+                                data-bs-toggle="modal"
+                                href="#createVoting"
+                            >
+                                Create Voting
+                            </a>
                         </div>
 
                         </div>
@@ -143,6 +193,106 @@ const Voting = (props) => {
                 </div>
                 </div>
             </div>
+
+        {/* The Modal */}
+        <div className="modal fade custom-modal" id="createVoting">
+                <div className="modal-dialog modal-dialog-centered">
+                <div className="modal-content bg-modal">
+                    <div className="modal-header">
+                    <button
+                        type="button"
+                        className="close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                    >
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    </div>
+                    <div className="modal-body">
+                    <div className="text-center pt-0 mb-4">
+                        <h5 className="modal-title">Create Voting</h5>
+                    </div>
+                    <form onSubmit={onSubmitCreate}>
+                        <div className="modal-info">
+                        <div className="row">
+                            <div className="col-12 col-md-12">
+                            <div className="form-group">
+                                <input
+                                onChange={onChangeValue}
+                                value={value.jobsId}
+                                type="text"
+                                name="jobsId"
+                                className="form-control"
+                                placeholder="Jobs ID"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <input
+                                onChange={onChangeValue}
+                                value={value.freelancerId}
+                                type="text"
+                                name="freelancerId"
+                                className="form-control"
+                                placeholder="Freelancer ID"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <input
+                                onChange={onChangeValue}
+                                value={value.question}
+                                type="text"
+                                name="question"
+                                className="form-control"
+                                placeholder="Question"
+                                />
+                            </div>
+                            {/* <div className="form-group">
+                                <input
+                                onChange={onChangeValue}
+                                value={value.variants}
+                                type="text"
+                                name="variants"
+                                className="form-control"
+                                placeholder="Variants"
+                                />
+                            </div> */}
+                            <div className="form-group">
+                                <input
+                                onChange={onChangeValue}
+                                value={value.start}
+                                type="text"
+                                name="start"
+                                className="form-control"
+                                placeholder="Start"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <input
+                                onChange={onChangeValue}
+                                value={value.end}
+                                type="text"
+                                name="end"
+                                className="form-control"
+                                placeholder="End"
+                                />
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div className="submit-section text-center">
+                        <button
+                            type="submit"
+                            className="btn btn-primary btn-block submit-btn"
+                        >
+                            Create Voting
+                        </button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+                </div>
+            </div>
+            {/* /The Modal */}
         </>
       )
   

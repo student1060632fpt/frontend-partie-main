@@ -51,7 +51,7 @@ const Header = (props) => {
         </li>
         <li className={pathname === "post-project" ? "active" : ""}>
           <Link to="/post-project" className="login-btn">
-            Post a Job{" "}
+            Post a Project{" "}
           </Link>
         </li>
       </ul>
@@ -288,7 +288,7 @@ const Header = (props) => {
                     <li
                       className={pathname === "manage-projects" ? "active" : ""}
                     >
-                      <Link to="/manage-projects">Jobs</Link>
+                      <Link to="/manage-projects">Manage Projects</Link>
                     </li>
                     <li
                       className={

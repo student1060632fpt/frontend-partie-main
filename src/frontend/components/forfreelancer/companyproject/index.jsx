@@ -190,7 +190,7 @@ const CompanyProject = (props) => {
                                                             to="/view-project-detail"
                                                             className="projects-btn"
                                                         >
-                                                            Edit Jobs
+                                                            Edit Project
                                                         </Link>
                                                         <Link to="#" className="hired-detail">
                                                             <span>5</span> Proposals
@@ -314,7 +314,7 @@ const CompanyProject = (props) => {
                                                             to="/view-project-detail"
                                                             className="projects-btn"
                                                         >
-                                                            Edit Jobs
+                                                            Edit Project
                                                         </Link>
                                                         <Link to="#" className="hired-detail">
                                                             <span>5</span> Proposals
@@ -438,7 +438,7 @@ const CompanyProject = (props) => {
                                                             to="/view-project-detail"
                                                             className="projects-btn"
                                                         >
-                                                            Edit Jobs
+                                                            Edit Project
                                                         </Link>
                                                         <Link to="#" className="hired-detail">
                                                             <span>5</span> Proposals
@@ -562,7 +562,7 @@ const CompanyProject = (props) => {
                                                             to="/view-project-detail"
                                                             className="projects-btn"
                                                         >
-                                                            Edit Jobs
+                                                            Edit Project
                                                         </Link>
                                                         <Link to="#" className="hired-detail">
                                                             <span>5</span> Proposals
@@ -686,7 +686,7 @@ const CompanyProject = (props) => {
                                                             to="/view-project-detail"
                                                             className="projects-btn"
                                                         >
-                                                            Edit Jobs
+                                                            Edit Project
                                                         </Link>
                                                         <Link to="#" className="hired-detail">
                                                             <span>5</span> Proposals

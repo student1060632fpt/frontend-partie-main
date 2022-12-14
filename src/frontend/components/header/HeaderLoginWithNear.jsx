@@ -22,7 +22,7 @@ const HeaderLoginWithNear = () => {
       </li>
       <li className={pathname === "post-project" ? "active" : ""}>
         <Link to="/post-project" className="login-btn">
-          Post a Job{" "}
+          Post a Project{" "}
         </Link>
       </li>
     </ul>

@@ -114,7 +114,7 @@ export class veFungibleToken{
             contractId: this.contractId,
             method: "show_jobs",
             args: {
-                jobs_id: jobs_id
+                jobs_id
             },
         })
     }
@@ -215,6 +215,16 @@ export class VotingContract{
             args: {
                 poll_id: poll_id,
                 votes: votes,
+            },
+        })
+    }
+
+    async claim_reward(poll_id){
+        return await this.wallet.callMethod({
+            contractId: this.contractId,
+            method: "claim_reward",
+            args: {
+                poll_id: poll_id,
             },
         })
     }
