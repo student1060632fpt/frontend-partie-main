@@ -1,10 +1,37 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import ReactSummernote from 'react-summernote';
 import 'react-summernote/dist/react-summernote.css'; 
+import axios from 'axios';
     
 const PostProject = (props) => {  
-          
+  const [fileForm, setFileForm] = useState('');
+  const [priceType, setPriceType] = useState('');
+  const [contentForm, setContentForm] = useState('');
+  const [projectName, setProjectName] = useState('');
+  const [category, setCategory] = useState('');
+  const [skills, setSkills] = useState();
+  const [startDate, setStartDate] = useState('');
+  // const fileForm = useRef(null);
+  function handleSubmit(e) {
+    console.log(projectName);
+    console.log(category);
+    console.log(skills);
+    console.log(fileForm);
+    console.log(contentForm);
+    console.log(startDate);
+  }
+  function handleFileUpload(e) {
+    e.preventDefault();
+    const reader = new FileReader();
+    reader.onload = () => {
+      var blocks = reader.result.split(";");
+      const data = blocks[1].split(",")[1];
+      setFileForm(data);
+    };
+    reader.onerror = (error) => console.error(error);
+    reader.readAsDataURL(e.target.files[0]);
+  }
   return (
     <>
     {/* Breadcrumb */}
@@ -35,7 +62,7 @@ const PostProject = (props) => {
         <div className="row">
           <div className="col-md-12">
             <div className="select-project mb-4">
-              <form >
+              <form onSubmit={handleSubmit}>
                 <div className="title-box widget-box">
                   {/* Project Title */}
                   <div className="title-content">
@@ -46,6 +73,7 @@ const PostProject = (props) => {
                           type="text"
                           className="form-control"
                           placeholder="Enter Project title"
+                          onChange={(e) => setProjectName(e.target.value)}
                         />
                       </div>
                     </div>
@@ -56,11 +84,11 @@ const PostProject = (props) => {
                     <div className="title-detail">
                       <h3>Category Type</h3>
                       <div className="form-group mb-0">
-                        <select className="form-control select">
+                        <select className="form-control select" onChange={(e) => setCategory(e.target.value)}>
                           <option value={0}>Select</option>
-                          <option value={1}>Apps Development</option>
-                          <option value={2}>UI Development</option>
-                          <option value={3}>Jaa</option>
+                          <option value="Apps Development">Apps Development</option>
+                          <option value="UI Development">UI Development</option>
+                          <option value="Java">Java</option>
                         </select>
                       </div>
                     </div>
@@ -71,11 +99,11 @@ const PostProject = (props) => {
                     <div className="title-detail">
                       <h3>Pricing Type</h3>
                       <div className="form-group price-cont mb-0" id="price_type">
-                        <select name="price" className="form-control select">
+                        <select name="price" className="form-control select" onChange={(e) => setPriceType(e.target.value)}>
                           <option value={0}>Select</option>
-                          <option value={1}>Fixed Budget Price</option>
-                          <option value={2}>Hourly Pricing</option>
-                          <option value={3}>Biding Price</option>
+                          <option value="Fixed Budget Price">Fixed Budget Price</option>
+                          <option value="Hourly Pricing">Hourly Pricing</option>
+                          <option value="Biding Price">Biding Price</option>
                         </select>
                       </div>
                       <div
@@ -175,6 +203,7 @@ const PostProject = (props) => {
                           defaultValue="Web Design"
                           id="services"
                           placeholder="UX, UI, App Design, Wireframing, Branding"
+                          onChange={(e) => setSkills(e.target.value)}
                         />
                         <p className="text-muted mb-0">
                           Enter skills for needed for project
@@ -219,6 +248,7 @@ const PostProject = (props) => {
                                 type="text"
                                 className="form-control datetimepicker"
                                 placeholder="Select Date"
+                                onChange={(e) => setStartDate(e.target.value)}
                               />
                             </div>
                           </div>
@@ -232,7 +262,7 @@ const PostProject = (props) => {
                     <div className="title-detail">
                       <h3>Add Documents</h3>
                       <div className="custom-file">
-                        <input type="file" className="custom-file-input" />
+                        <input type="file" className="custom-file-input" onChange={handleFileUpload}/>
                         <label className="custom-file-label" />
                       </div>
                       <p className="mb-0">
@@ -249,7 +279,7 @@ const PostProject = (props) => {
                         <div className="row form-row links-cont">
                           <div className="col-12 col-md-11">
                             <div className="form-group mb-0">
-                              <input type="text" className="form-control" />
+                              <input type="text" className="form-control"/>
                               <p className="mb-0">Add Reference links if any</p>
                             </div>
                           </div>
@@ -287,6 +317,7 @@ const PostProject = (props) => {
                               ['view', ['fullscreen', 'codeview']]
                             ]
                           }}
+                          onChange={(content) => setContentForm(content)}
                         />
                       </div>
                     </div>
