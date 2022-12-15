@@ -290,7 +290,6 @@ const Header = (props) => {
                   pathname === "freelancer-milestones" ||
                   pathname === "freelancer-task" ||
                   pathname === "freelancer-files" ||
-                  pathname === "voting" ||
                   pathname === "freelancer-payment"
                     ? "active"
                     : ""
@@ -325,9 +324,6 @@ const Header = (props) => {
                       <Link to="/developer-profile">My Profile</Link>
                     </li>
 
-                    <li>
-                      <Link to="/voting">Voting</Link>
-                    </li>
                     <li
                       className={
                         pathname === "freelancer-project-proposals" ||
@@ -385,40 +381,13 @@ const Header = (props) => {
                     : ""
                 }`}
               ></li>
-              {/* <li
+               <li
                 className={`has-submenu ${
-                  pathname === "blog-list" ||
-                  pathname === "blog-grid" ||
-                  pathname === "blog-details"
-                    ? "active"
-                    : ""
+                  pathname.includes("voting") ? "active" : ""
                 }`}
               >
-                <Link
-                  to="#"
-                  className={isSideMenu === "blog" ? "subdrop" : ""}
-                  onClick={() =>
-                    toggleSidebar(isSideMenu === "blog" ? "" : "blog")
-                  }
-                >
-                  Blog <i className="fas fa-chevron-down" />
-                </Link>
-                {isSideMenu === "blog" ? (
-                  <ul className="submenu">
-                    <li className={pathname === "blog-list" ? "active" : ""}>
-                      <Link to="/blog-list">Blog List</Link>
-                    </li>
-                    <li className={pathname === "blog-grid" ? "active" : ""}>
-                      <Link to="/blog-grid">Blog Grid</Link>
-                    </li>
-                    <li className={pathname === "blog-details" ? "active" : ""}>
-                      <Link to="/blog-details">Blog Details</Link>
-                    </li>
-                  </ul>
-                ) : (
-                  ""
-                )}
-              </li> */}
+                <Link to="/voting">Voting</Link>
+              </li>
             </ul>
           </div>
           {renderRightHeader()}

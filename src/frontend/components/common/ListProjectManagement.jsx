@@ -85,7 +85,7 @@ const ListProjectManagement = ({ status = "" }) => {
                     <div className="content-divider" />
                     <div className="projects-amount">
                       <h3>PAT {project.budget / 10 ** 18}</h3>
-                      <h5>in {daysRemaining(project.is_end)} Days</h5>
+                      <h5>in 7 Days</h5>
                     </div>
                     <div className="content-divider" />
                     <div className="projects-action text-center">
@@ -241,7 +241,7 @@ const ListProjectManagement = ({ status = "" }) => {
                   <div className="project-hire-info">
                     <div className="content-divider" />
                     <div className="projects-amount">
-                      <h3>PAT {project.budget}</h3>
+                      <h3>PAT {project.budget/10**18}</h3>
                       <h5>in 12 Days</h5>
                     </div>
                     <div className="content-divider" />

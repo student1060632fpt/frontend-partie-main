@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "8e3c1227-6ab5-487a-96fc-e0c6c190cddf",
+		"name": "Hackathon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15997366"
+	},
+	"item": [
+		{
+			"name": "https://quannguyen2711.pythonanywhere.com/api/auth/login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "ed25519:3NqPUHQAcfqMfL93jsVxJPgGFsh4xoa1X1UcLBgZT17N",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://quannguyen2711.pythonanywhere.com/api/auth/login",
+					"protocol": "https",
+					"host": [
+						"quannguyen2711",
+						"pythonanywhere",
+						"com"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://quannguyen2711.pythonanywhere.com/api/list_projects",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "ed25519:3NqPUHQAcfqMfL93jsVxJPgGFsh4xoa1X1UcLBgZT17N",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://quannguyen2711.pythonanywhere.com/api/list_projects",
+					"protocol": "https",
+					"host": [
+						"quannguyen2711",
+						"pythonanywhere",
+						"com"
+					],
+					"path": [
+						"api",
+						"list_projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://quannguyen2711.pythonanywhere.com/api/get_detail",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "ed25519:3NqPUHQAcfqMfL93jsVxJPgGFsh4xoa1X1UcLBgZT17N",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"jobId\": \"jLJ12PC_jLJ12PCeKUMaYm_jLJ12PCeKUMaYmTNT8EeJ\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://quannguyen2711.pythonanywhere.com/api/get_detail",
+					"protocol": "https",
+					"host": [
+						"quannguyen2711",
+						"pythonanywhere",
+						"com"
+					],
+					"path": [
+						"api",
+						"get_detail"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
