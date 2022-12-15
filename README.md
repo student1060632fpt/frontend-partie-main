@@ -1,68 +1,145 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Document team Partie
 
-## Available Scripts
+## 1. Ý tưởng:
 
-In the project directory, you can run:
+Nhóm em có dự định tạo Một Scheduled Social, ứng dụng thực hiện task cho quản lý và nhân viên, hoặc cho các nhân viên remote, freelancer để thực hiện các task của customer. Điểm đặc biệt ở đây là quản lý, doanh nghiệp có thể đặt phần thưởng hay mức phạt cho từng task bằng token.
 
-### `yarn start`
+## 2. Các công nghệ sử dụng:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Version control: Github, branch
+- Front-end:
+  - ReactJs làm framework chính
+  - Redux Toolkit để quản lý store
+  - Các UI library: Ant design, Bootstrap, material ui
+  - Webpack: để đóng gói và build bản product, vì cài webpack nên lúc npm install lần đầu rất chậm
+- Back-end: Django, MongoDB, Python
+- Smart Contract: Rust
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## 3. Kế hoạch thực hiện dự án của nhóm:
 
-### `yarn test`
+- Tuần 1: Cả nhóm lên kế hoạch, bàn bạc về ý tưởng, tính khả thi, tên và logo dự án
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Tuần 2: Quyết định chọn ý tưởng. Lên design chi tiết website, workflow và diagram.
 
-### `yarn build`
+- Tuần 3: Xây dựng dần smart contract, vẽ cấu trúc database. Build layout cho front-end
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Tuần 4: Kết nối Front-end với API và smart contract. Hoàn thiện project và chuẩn bị cho Demo Pitching Day
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## 4. Flow chart luồng thuyết trình
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+[https://drive.google.com/file/d/19F_OKD9PUu69Mw8wAPdtTYw2QBudfeBE/view?usp=sharing](https://drive.google.com/file/d/19F_OKD9PUu69Mw8wAPdtTYw2QBudfeBE/view?usp=sharing)
 
-### `yarn eject`
+## 5. front-end:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### a. trang:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. home page
+   1. Header: thông báo (quân)
+   2. top categories of job
+   3. top hot job:
+   4. list professional freelancer
+   5. bỏ feature blog
+   6. modal: sign in, chỉ cần kết nối với ví
+   7. gửi địa chỉ ví về backend
+2. form upload profile cho user : cv
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+   8. /freelancer-profile-settings
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+3. profile freelancer
 
-## Learn More
+   9. /developer-profile
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. list job:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   10. filter
+   11. /project
 
-### Code Splitting
+5. list freelancer 10 người có point cao nhất: 12. filter 13. /developer
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+6. job detail 14. token 15. description 16. list freelancer đã nhắm job đó 17. detail người đăng job đó 18. modal nhận job với số ngày freelancer được quyền chọn 19. /project-details
 
-### Analyzing the Bundle Size
+7. quản lý job 20. list job 1. /manage-projects 21. đăng job 2. /post-project
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+8. list freelancer apply to my job 22. all project 3. những freelancer đã thầu từng project 23. /pending-projects
 
-### Making a Progressive Web App
+9. vote report - vote theo người có token sẵn cao nhất
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+10. freelancer report
 
-### Advanced Configuration
+### b. Deploy
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Nhóm dùng vercel để deploy, tuy là vercel setup hơi chậm nhưng mà vercel hiện tại đang hỗ trợ setup dễ dàng nhất và miễn phí hiện tại để thay thế cho heroku
 
-### Deployment
+[Project Settings – Dashboard – Vercel](https://vercel.com/student1060632fpt/template-reactjs-kofe/settings)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+### c. Source code
 
-### `yarn build` fails to minify
+- Link github front end để test
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[student1060632fpt/frontend-partie-main (github.com)](https://github.com/student1060632fpt/frontend-partie-main)
+
+- **Source github frontend bản chính**
+
+[student1060632fpt/frontend-partie-main (github.com)](https://github.com/student1060632fpt/frontend-partie-main)
+
+### d. Cấu trúc dự án
+
+Dự án được định sẵn sẽ cấu trúc theo React Global thông dụng dễ dùng
+
+### e. Cách chạy source code
+
+- Sau khi clone source code từ github về chạy, npm i phải có flag –legacy phía sau nếu không sẽ bị conflict phiên bản nên sẽ không thể chạy được. Lần npm i đầu tiên sẽ mất 1 tiếng và gặp nhiều lỗi. Lần thứ hai và thứ ba mới đỡ tốn thời gian hơn
+
+```
+  npm i --legacy-peer-deps
+```
+
+
+* Sau đó chạy source code như bình thường, lần đầu chạy source code npm start sẽ mất thêm 1 tiếng nữa để chạy tại vì webpack lần đầu bundle rất lâu, lần thứ hai và lần thứ ba sẽ còn 5 giây
+
+```
+npm start
+```
+
+## 6.  Smart contract
+
+- source UI test để get data từ smc bản cũ
+
+[https://github.com/thanh-hdt/ui-pat](https://github.com/thanh-hdt/ui-pat)
+
+- source UI test để get data từ smc bản mới
+
+[thanh-hdt/ui-pat-test (github.com)](https://github.com/thanh-hdt/ui-pat-test)
+
+- **Source main smart contract**
+
+[https://github.com/thanh-hdt/smc-partie-team](https://github.com/thanh-hdt/smc-partie-team)
+
+## 7.  function backend:
+
+- sign-in
+  - POST - json: {address: string} -> lấy address làm token
+- sign-up
+  - POST - formdata: {address: string, name: string, image: base64, attachment: array&lt;string> (bắt validate link), email: string, skill: array&lt;string>, social: array&lt;string>}
+- quản lý user: hình ảnh, cv, họ tên, email, địa chỉ ví
+  - EDIT
+- quản lý job: liên kết với freelancer
+  - POST - json: {id: string(front-end tạo), address: string, budget: number, categories: Array&lt;string>, skill: array&lt;string>, attachments: string, deadline: hh:mm:ss dd/mm/yyyy}
+  - GET/:jobId
+  - GET/
+  - UPDATE khi chưa có người nhận
+  - DELETE/:jobId
+- quản lý freelancer
+
+### 8. Thành viên nhóm
+
+- Nguyễn Lê Xuân Hòa - 2033145 - hoa.nguyen_bk@hcmut.edu.vn
+
+- Hoàng Đình Thành - 1915130 - thanh.hoangbk2k.k19@hcmut.edu.vn
+
+- Nguyễn Hồng Quân - 2052228 - quan.nguyen2711@hcmut.edu.vn
+
+### 9. Demo website app:
+
+[https://partie-hackathon.vercel.app/template/index](https://partie-hackathon.vercel.app/template/index)
+

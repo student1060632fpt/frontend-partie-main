@@ -51,13 +51,17 @@ const Staking = (props) => {
     console.log("stringData ", stringData);
     const rp = stringData.replace(/["]+/g, '"');
     console.log("rp: ", rp);
-    await contract_id
-      .get("ftContractId")
-      .ft_transfer_call(
-        "staking-test21.thanhdevtest.testnet",
-        amount.toString(),
-        rp
-      );
+    try {
+      await contract_id
+        .get("ftContractId")
+        .ft_transfer_call(
+          "staking-test21.thanhdevtest.testnet",
+          amount?.toString(),
+          rp
+        );
+    } catch (error) {
+      console.log({ error });
+    }
   }
 
   async function submitUnStake(amount_stake) {
@@ -69,12 +73,9 @@ const Staking = (props) => {
   const handelChangeDeposit = (event) => {
     let value = event.target.value;
     var regex1 = /^[0-9]*(\.)?[0-9]*$/g;
-    const check = !regex1.test(event.target.value);
-    if (check) {
-      value = valueDeposit;
-    }
-    if (value > balanceFt / (10 ** 18)) {
-      value = balanceFt / (10 ** 18);
+    value = valueDeposit;
+    if (value > balanceVeFt / 10 ** 18) {
+      value = balanceVeFt / 10 ** 18;
     }
     setValueDeposit(value);
   };
@@ -86,8 +87,8 @@ const Staking = (props) => {
     if (check) {
       value = valueWithdraw;
     }
-    if (value > balanceVeFt / (10 ** 18)) {
-      value = balanceVeFt / (10 ** 18);
+    if (value > balanceVeFt / 10 ** 18) {
+      value = balanceVeFt / 10 ** 18;
     }
     setValueWithdraw(value);
   };
@@ -108,9 +109,27 @@ const Staking = (props) => {
           <div className="row">
             {/* sidebar */}
             <div className="col-xl-3 col-md-4 theiaStickySidebar">
-              <StickyBox offsetTop={20} offsetBottom={20}>
-                <Sidebar />
-              </StickyBox>
+              {/* overview  */}
+              <div className=" pro-post widget-box about-widget profile-overview">
+                <div className="profile-head">
+                  <h4 className="pro-title mb-0">Overview</h4>
+                </div>
+                <ul className="latest-posts pro-content">
+                  <li>
+                    <p>Total staked</p>
+                    <h6>PAT {totalStaked / 10 ** 18} </h6>
+                  </li>
+                  <li>
+                    <p>APR</p>
+                    <h6>36.2%</h6>
+                  </li>
+                  <li>
+                    <p>Stake Information</p>
+                    <h6>Claim your share of protocol revenue generated.</h6>
+                  </li>
+                </ul>
+              </div>
+              {/* overview  */}
             </div>
             {/* /sidebar */}
             <div className="col-xl-9 col-md-8">
@@ -121,102 +140,111 @@ const Staking = (props) => {
                   </div>
                 </div>
               </div>
-
-              {/* project list */}
-              <div className="staking">
-                <div className="" style={{ width: "70%"}}>
-                  <h3>Overview</h3>
-                  <div className="overview">
-                    <div className="border" style={{ width: "50%","border-radius": "10px", "margin-right": "8px",  "margin-top": "8px"  }}>
-                      <span>Total staked</span>
-                      <p>{totalStaked / (10 ** 18)} PAT</p>
-                    </div>
-                    <div className="border" style={{ width: "50%","border-radius": "10px", "margin-right": "8px",  "margin-top": "8px"  }}>
-                      <span>APR</span>
-                      <p>36.2%</p>
-                    </div>
-                  </div>
-
-                  <div className="border" style={{"border-radius": "10px", "margin-right": "8px",  "margin-top": "8px"  }}>
-                    <span>Stake Information</span>
-                    <p>Claim your share of protocol revenue generated.</p>
-                  </div>
-                </div>
-                <div className="" style={{ width: "30%"}}>
-                  <div className="border" style={{"border-radius": "10px", "margin-right": "8px",  "margin-top": "8px" }}>
-                    <Tabs>
-                      <TabList>
-                        <Tab>Stake</Tab>
-                        <Tab>UnStake</Tab>
-                      </TabList>
-
-                      <TabPanel>
-                        <div style={{"margin":"10px 10px"}}>
-                          <div className="d-flex justify-content-between align-items-center voting-sidebar">
-                            <span>Balance</span>
-                            <span>{balanceFt / (10 ** 18)} PAT</span>
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="card">
+                    <div className="payment-list wallet card-body">
+                      <h3>Stake</h3>
+                      <div className="d-flex justify-content-between align-items-center voting-sidebar">
+                        <span>Balance</span>
+                        <span>{balanceFt / 10 ** 18} PAT</span>
+                      </div>
+                      <div className="row">
+                        <div className="col-md-12">
+                          <div className="form-group">
+                            <div className="row">
+                              <div className="col-md-10">
+                                <label htmlFor="first_name">
+                                  Stake your token
+                                </label>
+                                <input
+                                  className="form-control"
+                                  type="text"
+                                  placeholder="0.0"
+                                  value={valueDeposit}
+                                  // minLength={1}
+                                  // maxLength={20}
+                                  onChange={handelChangeDeposit}
+                                />
+                              </div>
+                              <div className="col-md-2 d-flex align-items-center">
+                                <button
+                                  className="btn btn-outline-primary"
+                                  onClick={() => {
+                                    setValueDeposit(balanceFt / 10 ** 18);
+                                  }}
+                                >
+                                  MAX
+                                </button>
+                              </div>
+                            </div>
                           </div>
-                          <div className="border">
-                            <input
-                              type="text"
-                              placeholder="0.0"
-                              value={valueDeposit}
-                              minLength={1}
-                              maxLength={20}
-                              onChange={handelChangeDeposit}
-                            />
-                            <button
-                              onClick={() => {
-                                setValueDeposit(balanceFt / (10 ** 18));
-                              }}
-                            >
-                              MAX
-                            </button>
-                            <span>PAT</span>
-                          </div>
+                        </div>
 
+                        <div className="col-md-12 text-end">
                           <button
-                            onClick={() => {
+                            className="btn-primary click-btn"
+                            onClick={() =>
                               submitStake(
                                 ethers.utils.parseUnits(
-                                  valueDeposit.toString(),
+                                  "11",
                                   18
                                 )
-                              );
-                            }}
-                            disabled={valueDeposit ? false : true}
+                              )
+                            }
                           >
                             Stake
                           </button>
                         </div>
-                      </TabPanel>
-                      <TabPanel>
-                        <div style={{"margin":"10px 10px"}}>
-                          <div className="d-flex justify-content-between align-items-center voting-sidebar">
-                            <span>Balance</span>
-                            <span>{balanceVeFt / (10 ** 18)} vePAT</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="card">
+                    <div className="payment-list wallet card-body">
+                      <h3>Un Stake</h3>
+                      <div className="d-flex justify-content-between align-items-center voting-sidebar">
+                        <span>Balance</span>
+                        <span>vePAT {balanceVeFt / 10 ** 18}</span>
+                      </div>
+                      <div className="row">
+                        <div className="col-md-12">
+                          <div className="form-group">
+                            <div className="row">
+                              <div className="col-md-10">
+                                <label htmlFor="first_name">
+                                  UnStake your token
+                                </label>
+                                <input
+                                  className="form-control"
+                                  type="text"
+                                  placeholder="0.0"
+                                  value={valueWithdraw}
+                                  // minLength={1}
+                                  // maxLength={20}
+                                  onChange={handelChangeWithdraw}
+                                />
+                              </div>
+                              <div className="col-md-2 d-flex align-items-center">
+                                <button
+                                  className="btn btn-outline-primary"
+                                  onClick={() => {
+                                    setValueWithdraw(balanceVeFt / 10 ** 18);
+                                  }}
+                                >
+                                  MAX
+                                </button>
+                              </div>
+                            </div>
                           </div>
-                          <div className="border">
-                            <input
-                              type="text"
-                              placeholder="0.0"
-                              value={valueWithdraw}
-                              minLength={1}
-                              maxLength={20}
-                              onChange={handelChangeWithdraw}
-                            />
-                            <button
-                              onClick={() => {
-                                setValueWithdraw(balanceVeFt / (10 ** 18));
-                              }}
-                            >
-                              MAX
-                            </button>
-                            <span>PAT</span>
-                          </div>
+                        </div>
+
+                        <div className="col-md-12 text-end">
                           <button
+                            className="btn-primary click-btn"
                             onClick={() => {
-                              submitUnStake(
+                              return submitUnStake(
                                 ethers.utils.parseUnits(
                                   valueWithdraw.toString(),
                                   18
@@ -228,15 +256,27 @@ const Staking = (props) => {
                             UnStake
                           </button>
                         </div>
-                      </TabPanel>
-                    </Tabs>
+                      </div>
+                    </div>
                   </div>
-                  <div className="border" style={{"border-radius": "10px", "margin-right": "8px",  "margin-top": "8px" }}>
-                    <span style={{"margin":"8px"}}>My Positions</span>
+                </div>
+              </div>
+              {/* project list */}
+              {/* <div className="staking col-md-6">
+                <div className="">
+                  <div
+                    className="border"
+                    style={{
+                      "border-radius": "10px",
+                      "margin-right": "8px",
+                      "margin-top": "8px",
+                    }}
+                  >
+                    <span style={{ margin: "8px" }}>My Positions</span>
                     <div className="d-flex justify-content-between align-items-center voting-sidebar">
                       <div>
                         <p>Staked</p>
-                        <p>{balanceVeFt / (10 ** 18)} PAT</p>
+                        <p>{balanceVeFt / 10 ** 18} PAT</p>
                       </div>
                       <div>
                         <p>Pending Rewards</p>
@@ -248,7 +288,7 @@ const Staking = (props) => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
               {/* /pagination */}
             </div>
           </div>
