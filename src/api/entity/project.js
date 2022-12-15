@@ -10,7 +10,7 @@ class Project {
     if (!project && project[0] && project[1]) return;
     this.projectId = project[0] || this[0];
     const project1 = project[1] || this[1];
-
+console.log({project});
     Object.keys(project1).forEach((key) => {
       this[key] = project1[key];
       this.freelancers = ( !project1['freelancers']) ?[]: Object.entries(project1['freelancers']).map((freelancer,index) => {
@@ -19,6 +19,26 @@ class Project {
     });
   }
 }
+
+export class ProjectDetail {
+    creator_id = '';
+    budget = '';
+    is_start = '';
+    is_end = '';
+    voting_id = '';
+    freelancers = [];
+    constructor(project) {
+      if (!project) return;
+
+  console.log({project});
+      Object.keys(project).forEach((key) => {
+        this[key] = project[key];
+        this.freelancers = ( !project['freelancers']) ?[]: Object.entries(project['freelancers']).map((freelancer,index) => {
+          return new Freelancers(freelancer)
+        })  
+      });
+    }
+  }
 
 export class Freelancers{
   name = ""
@@ -40,7 +60,25 @@ export class Freelancers{
 }
 
 export default Project
-
+let projectDetail = {
+    "creator_id": "dollcreator.testnet",
+    "budget": 12000000000000000000,
+    "freelancers": {
+        "dollnguyen12345.testnet": {
+            "creator": [
+                true,
+                false
+            ],
+            "freelancer": [
+                true,
+                true
+            ]
+        }
+    },
+    "is_start": true,
+    "is_end": false,
+    "voting_id": ""
+}
 let project = [
   "lMh5dPT_lMh5dPTuMhvDLs_lMh5dPTuMhvDLsjFYsVvd",
   {

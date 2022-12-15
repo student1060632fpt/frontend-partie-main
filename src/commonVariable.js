@@ -4,6 +4,7 @@ const statusRenderListProject = {
 }
 
 const  statusRenderListProjectForFreelancer = {
+  myProposal: "myProposal",
   onGoing: "onGoing",
   complete: "complete"
 }

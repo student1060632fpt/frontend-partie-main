@@ -90,7 +90,7 @@ const ListProjectManagement = ({ status = "" }) => {
                     <div className="content-divider" />
                     <div className="projects-action text-center">
                       <Link
-                        to={`/view-project-detail/${project[0]}`}
+                        to={`/view-project-detail/${project.projectId}`}
                         className="projects-btn"
                       >
                         View Details{" "}
@@ -167,7 +167,7 @@ const ListProjectManagement = ({ status = "" }) => {
                     <div className="content-divider" />
                     <div className="projects-action">
                       <Link
-                        to={`/project-proposals/${project[0]}`}
+                        to={`/project-proposals/${project.projectId}`}
                         className="projects-btn"
                       >
                         View Proposals{" "}

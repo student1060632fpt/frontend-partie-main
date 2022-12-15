@@ -53,7 +53,6 @@ const FreelancerListProject = ({ status = "" }) => {
               <div className="card-body">
                 <div className="projects-details align-items-center">
                   <div className="project-info project">
-                    <span>{truncateText(project.creator_id)}</span>
                     <h2>Website Designer Required For Directory Theme</h2>
                     <div className="proposal-client">
                       <h4 className="title-info">Client Price</h4>
@@ -70,7 +69,7 @@ const FreelancerListProject = ({ status = "" }) => {
                         <img src={Developer_01} alt="" className="img-fluid" />
                       </div>
                       <div className="proposer-detail">
-                        <h4>{wallet.accountId}</h4>
+                        <h4>{truncateText(project.creator_id)}</h4>
                         <ul className="proposal-details">
                           <li> October 10, 2021</li>
                           <li>
@@ -114,7 +113,7 @@ const FreelancerListProject = ({ status = "" }) => {
         }
         return <></>;
       });
-    } else if (status === statusRenderListProjectForFreelancer.pending) {
+    } else if (status === statusRenderListProjectForFreelancer.myProposal) {
       return listProject.map((project) => {
         if (!!project.is_start) {
           return <></>;
