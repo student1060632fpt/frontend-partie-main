@@ -290,6 +290,7 @@ const AppContainer = function (props) {
             {/* Privacy Pages */}
             <Route exact path="/privacy-policy" component={PrivacyPolicy} />
             <Route exact path="/term-condition" component={TermsCondition} />  
+            <Route exact path="*" component={Page404} /> 
            
         </Switch>
         <Route render={(props) => <Footer {...props} />} />

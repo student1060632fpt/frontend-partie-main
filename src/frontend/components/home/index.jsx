@@ -442,43 +442,9 @@ const Home = () => {
         </div>
       </section>
       {/* /Projects */}
-      {/* Subscribe */}
-      <section className="section subscribe">
-        <div className="container">
-          <div className="row align-items-center aos" data-aos="fade-up">
-            <div className="col-md-4">
-              <img
-                src={Subscribe}
-                className="img-fluid"
-                alt="subscribe"
-              />
-            </div>
-            <div className="col-md-6">
-              <h3>Subscribe To Get Discounts, Updates &amp; More</h3>
-              <p>Monthly product updates, industry news and more!</p>
-              <form action="#" method="POST">
-                <div className="form-inner">
-                  <div className="input-group">
-                    <input
-                      type="email"
-                      className="form-control"
-                      placeholder="Enter Email Address"
-                    />
-                    <button className="btn btn-primary sub-btn" type="submit">
-                      Submit
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* End Subscribe */}
       {/* Top Instructor */}
       <TopDevelopers />
       {/* End Developer */}
-      <Reviews />
 
     </>
 
