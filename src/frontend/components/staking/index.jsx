@@ -268,7 +268,7 @@ const Staking = (props) => {
                 </div>
               </div>
               {/* project list */}
-              <div className="staking col-md-6">
+              {/* <div className="staking col-md-6">
                 <div className="">
                   <div
                     className="border"
@@ -294,7 +294,7 @@ const Staking = (props) => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
               {/* /pagination */}
             </div>
           </div>
