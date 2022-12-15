@@ -69,7 +69,7 @@ const Header = (props) => {
       pathname.includes("freelancer-") ? (
       renderFreelancerInvoiceViewInvoice()
     ) : (
-      <HeaderLoginWithNear/>
+      <HeaderLoginWithNear />
     );
   };
 
@@ -172,23 +172,17 @@ const Header = (props) => {
                 <Link
                   to="/index"
                   className={isSideMenu === "home" ? "subdrop" : ""}
-                 
                 >
-                  Home 
+                  Home
                 </Link>
-              
               </li>
 
               <li
                 className={`has-submenu ${
-                  pathname.includes("staking")
-                    ? "active"
-                    : ""
+                  pathname.includes("staking") ? "active" : ""
                 }`}
               >
-              <Link to="/staking">
-                  Staking 
-              </Link>
+                <Link to="/staking">Staking</Link>
               </li>
 
               <li
@@ -231,44 +225,8 @@ const Header = (props) => {
                 </Link>
                 {isSideMenu === "foremployers" ? (
                   <ul className="submenu">
-                    <li
-                      className={`has-submenu ${
-                        pathname === "developer" ||
-                        pathname === "developer-details"
-                          ? "active"
-                          : ""
-                      }`}
-                    >
-                      <Link
-                        to="#"
-                        onClick={() =>
-                          toggleSidebar1(
-                            isSideMenu1 === "freelancer" ? "" : "freelancer"
-                          )
-                        }
-                      >
-                        Freelancer
-                      </Link>
-                      {isSideMenu1 === "freelancer" ? (
-                        <ul className="submenu">
-                          <li
-                            className={pathname === "developer" ? "active" : ""}
-                          >
-                            <Link to="/developer">Freelancer</Link>
-                          </li>
-                          <li
-                            className={
-                              pathname === "developer-details" ? "active" : ""
-                            }
-                          >
-                            <Link to="/developer-details">
-                              Freelancer Details
-                            </Link>
-                          </li>
-                        </ul>
-                      ) : (
-                        ""
-                      )}
+                    <li className={pathname === "developer" ? "active" : ""}>
+                      <Link to="/developer">Chats</Link>
                     </li>
                     <li className={pathname === "dashboard" ? "active" : ""}>
                       <Link to="/dashboard">Dashboard</Link>
@@ -290,58 +248,11 @@ const Header = (props) => {
                     >
                       <Link to="/manage-projects">Manage Projects</Link>
                     </li>
-                    <li
-                      className={
-                        pathname === "favourites" ||
-                        pathname === "invited-freelancer"
-                          ? "active"
-                          : ""
-                      }
-                    >
-                      <Link to="/favourites">Favourites</Link>
-                    </li>
-                    <li
-                      className={
-                        pathname === "membership-plans" ? "active" : ""
-                      }
-                    >
-                      <Link to="/membership-plans">Membership</Link>
-                    </li>
-                    <li
-                      className={
-                        pathname === "view-project-detail" ||
-                        pathname === "milestones" ||
-                        pathname === "tasks" ||
-                        pathname === "files" ||
-                        pathname === "project-payment"
-                          ? "active"
-                          : ""
-                      }
-                    >
-                      <Link to="/milestones">Milestones</Link>
-                    </li>
+
                     <li className={pathname === "chats" ? "active" : ""}>
                       <Link to="/chats">Chats</Link>
                     </li>
-                    <li className={pathname === "review" ? "active" : ""}>
-                      <Link to="/review">Review</Link>
-                    </li>
-                    <li
-                      className={
-                        pathname === "deposit-funds" ||
-                        pathname === "withdraw-money" ||
-                        pathname === "transaction-history"
-                          ? "active"
-                          : ""
-                      }
-                    >
-                      <Link to="/deposit-funds">Payments</Link>
-                    </li>
-                    <li
-                      className={pathname === "verify-identity" ? "active" : ""}
-                    >
-                      <Link to="/verify-identity">Verify Identity</Link>
-                    </li>
+
                     <li
                       className={
                         pathname === "profile-settings" ? "active" : ""
@@ -400,42 +311,8 @@ const Header = (props) => {
                 </Link>
                 {isSideMenu === "forfreelancer" ? (
                   <ul className="submenu">
-                    <li
-                      className={`has-submenu ${
-                        pathname === "project" || pathname === "project-details"
-                          ? "active"
-                          : ""
-                      }`}
-                    >
-                      <Link
-                        to="#"
-                        className={isSideMenu2 === "projects" ? "subdrop" : ""}
-                        onClick={() =>
-                          toggleSidebar2(
-                            isSideMenu2 === "projects" ? "" : "projects"
-                          )
-                        }
-                      >
-                        Jobs
-                      </Link>
-                      {isSideMenu2 === "projects" ? (
-                        <ul className="submenu">
-                          <li
-                            className={pathname === "project" ? "active" : ""}
-                          >
-                            <Link to="/project">Jobs</Link>
-                          </li>
-                          <li
-                            className={
-                              pathname === "project-details" ? "active" : ""
-                            }
-                          >
-                            <Link to="/project-details">Project Details</Link>
-                          </li>
-                        </ul>
-                      ) : (
-                        ""
-                      )}
+                    <li>
+                      <Link to="/project">Project</Link>
                     </li>
                     <li
                       className={
@@ -467,36 +344,9 @@ const Header = (props) => {
                           : ""
                       }
                     >
-                      <Link to="/freelancer-project-proposals">Jobs</Link>
+                      <Link to="/freelancer-project-proposals">Projects</Link>
                     </li>
-                    <li
-                      className={
-                        pathname === "freelancer-favourites" ||
-                        pathname === "freelancer-invitations"
-                          ? "active"
-                          : ""
-                      }
-                    >
-                      <Link to="/freelancer-favourites">Favourites</Link>
-                    </li>
-                    <li
-                      className={
-                        pathname === "freelancer-membership" ? "active" : ""
-                      }
-                    >
-                      <Link to="/freelancer-membership">Membership</Link>
-                    </li>
-                    <li
-                      className={
-                        pathname === "freelancer-change-password"
-                          ? "active"
-                          : ""
-                      }
-                    >
-                      <Link to="/freelancer-change-password">
-                        Change Password
-                      </Link>
-                    </li>
+
                     <li
                       className={
                         pathname === "freelancer-chats" ? "active" : ""
@@ -504,34 +354,7 @@ const Header = (props) => {
                     >
                       <Link to="/freelancer-chats">Chats</Link>
                     </li>
-                    <li
-                      className={
-                        pathname === "freelancer-review" ? "active" : ""
-                      }
-                    >
-                      <Link to="/freelancer-review">Review</Link>
-                    </li>
-                    <li
-                      className={
-                        pathname === "freelancer-withdraw-money" ||
-                        pathname === "freelancer-transaction-history"
-                          ? "active"
-                          : ""
-                      }
-                    >
-                      <Link to="/freelancer-withdraw-money">Payments</Link>
-                    </li>
-                    <li
-                      className={
-                        pathname === "freelancer-verify-identity"
-                          ? "active"
-                          : ""
-                      }
-                    >
-                      <Link to="/freelancer-verify-identity">
-                        Verify Identity
-                      </Link>
-                    </li>
+
                     <li
                       className={
                         pathname === "freelancer-profile-settings"
@@ -561,95 +384,7 @@ const Header = (props) => {
                     ? "active"
                     : ""
                 }`}
-              >
-                <Link
-                  to="#"
-                  className={isSideMenu === "pages" ? "subdrop" : ""}
-                  onClick={() =>
-                    toggleSidebar(isSideMenu === "pages" ? "" : "pages")
-                  }
-                >
-                  Pages <i className="fas fa-chevron-down" />
-                </Link>
-                {isSideMenu === "pages" ? (
-                  <ul className="submenu">
-                    <li className={pathname === "about" ? "active" : ""}>
-                      <Link to="/about">About us</Link>
-                    </li>
-                    <li className={pathname === "blank-page" ? "active" : ""}>
-                      <Link to="/blank-page">Starter Page</Link>
-                    </li>
-                    <li className={pathname === "404-page" ? "active" : ""}>
-                      <Link to="/404-page">404 Page</Link>
-                    </li>
-                    <li
-                      className={
-                        pathname === "user-account-details" ? "active" : ""
-                      }
-                    >
-                      <Link to="/user-account-details">User Details</Link>
-                    </li>
-                    <li
-                      className={`has-submenu ${
-                        pathname === "freelancer-invoices" ||
-                        pathname === "view-invoice"
-                          ? "active"
-                          : ""
-                      }`}
-                    >
-                      <Link
-                        to="#"
-                        className={isSideMenu3 === "invoices" ? "subdrop" : ""}
-                        onClick={() =>
-                          toggleSidebar3(
-                            isSideMenu3 === "invoices" ? "" : "invoices"
-                          )
-                        }
-                      >
-                        Invoices
-                      </Link>
-                      {isSideMenu3 === "invoices" ? (
-                        <ul className="submenu">
-                          <li
-                            className={
-                              pathname === "freelancer-invoices" ? "active" : ""
-                            }
-                          >
-                            <Link to="/freelancer-invoices">Invoices</Link>
-                          </li>
-                          <li
-                            className={
-                              pathname === "view-invoice" ? "active" : ""
-                            }
-                          >
-                            <Link to="/view-invoice">Invoice View</Link>
-                          </li>
-                        </ul>
-                      ) : (
-                        ""
-                      )}
-                    </li>
-                    <li className={pathname === "login" ? "active" : ""}>
-                      <Link to="/login">Login</Link>
-                    </li>
-                    <li className={pathname === "register" ? "active" : ""}>
-                      <Link to="/register">Register</Link>
-                    </li>
-                    <li
-                      className={pathname === "forgot-password" ? "active" : ""}
-                    >
-                      <Link to="/forgot-password">Forgot Password</Link>
-                    </li>
-                    <li
-                      className={pathname === "change-password" ? "active" : ""}
-                    >
-                      <Link to="/change-password">Change Password</Link>
-                    </li>
-                  </ul>
-                ) : (
-                  ""
-                )}
-              </li>
+              ></li>
               {/* <li
                 className={`has-submenu ${
                   pathname === "blog-list" ||
@@ -684,11 +419,6 @@ const Header = (props) => {
                   ""
                 )}
               </li> */}
-              <li>
-                <Link to="/admin/login" target="_blank">
-                  Admin
-                </Link>
-              </li>
             </ul>
           </div>
           {renderRightHeader()}

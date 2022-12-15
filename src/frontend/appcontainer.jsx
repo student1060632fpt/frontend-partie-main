@@ -226,7 +226,7 @@ const AppContainer = function (props) {
             <Route exact path="/completed-projects" component={CompletedProjects} />
             <Route exact path="/ongoing-projects" component={OngoingProjects} />
             <Route exact path="/cancelled-projects" component={CancelledProjects} />
-            <Route exact path="/view-project-detail" component={ViewProjectdetails} />
+            <Route exact path="/view-project-detail/:id" component={ViewProjectdetails} />
             <Route exact path="/milestones" component={Milestone} />
             <Route exact path="/tasks" component={Task} />
             <Route exact path="/files" component={File} />
