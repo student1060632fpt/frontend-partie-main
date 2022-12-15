@@ -146,7 +146,7 @@ const ProjectDetails = () => {
                       <ul className="profile-right">
                         <li>
                           <div className="amt-hr">
-                            PAT {jobDetail.budget} <p>( FIXED )</p>
+                            PAT {jobDetail.budget/10**18} <p>( FIXED )</p>
                           </div>
                         </li>
                       </ul>

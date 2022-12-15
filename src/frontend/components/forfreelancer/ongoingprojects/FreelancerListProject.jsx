@@ -57,7 +57,7 @@ const FreelancerListProject = ({ status = "" }) => {
                     <div className="proposal-client">
                       <h4 className="title-info">Client Price</h4>
                       <div className="d-flex">
-                        <h3 className="client-price me-2">PAT {project.budget}</h3>
+                        <h3 className="client-price me-2">PAT {project.budget/10**18}</h3>
                         <p className="amnt-type">( FIXED )</p>
                       </div>
                     </div>

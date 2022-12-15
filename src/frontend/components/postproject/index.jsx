@@ -6,6 +6,7 @@ import "react-summernote/dist/react-summernote.css";
 import { makeRandomId } from "../../../shared/help";
 import { Breadcrumb } from "../common";
 import { useHistory } from "react-router-dom";
+import { ethers } from "ethers";
 
 const PostProject = (props) => {
   const [value, setValue] = useState({
@@ -33,7 +34,10 @@ const PostProject = (props) => {
     };
     const stringData = JSON.stringify(dataInput);
     const rp = stringData.replace(/["]+/g, '"');
-    const budget = value.budget*(10**18)
+    const budget = ethers.utils.parseUnits(
+      value.budget.toString(),
+      18
+    )
     console.log(value.budget,"budget = ",budget,"budget to string",budget.toString() );
     try {
       

@@ -67,12 +67,6 @@ const HeaderUserAccountDetail = () => {
           <Link className="dropdown-item" to="/manage-projects">
             <i className="material-icons">business_center</i> Projects
           </Link>
-          <Link className="dropdown-item" to="/favourites">
-            <i className="material-icons">local_play</i> Favourites
-          </Link>
-          <Link className="dropdown-item" to="/review">
-            <i className="material-icons">pie_chart</i> Reviews
-          </Link>
           <div className="drop-head">Account Details</div>
           <Link className="dropdown-item" to="/profile-settings">
             {" "}

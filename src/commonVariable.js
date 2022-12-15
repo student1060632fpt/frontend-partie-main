@@ -1,6 +1,7 @@
 const statusRenderListProject = {
   pending: "pending",
-  onGoing: "onGoing"
+  onGoing: "onGoing",
+  complete: "complete"
 }
 
 const  statusRenderListProjectForFreelancer = {
