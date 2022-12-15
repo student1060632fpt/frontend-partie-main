@@ -84,7 +84,7 @@ const Voting = (props) => {
                     <div className="page-title">
                         <div className="row">
                         <div className="col-md-6">
-                            <h3>Manage Proposals</h3>
+                            <h3>Manage Voting</h3>
                         </div>
                         <div className="col-md-6">
                             <a
@@ -101,18 +101,18 @@ const Voting = (props) => {
                     <nav className="user-tabs project-tabs">
                         <ul className="nav nav-tabs nav-tabs-bottom nav-justified">
                         <li className="nav-item">
-                            <Link className="nav-link active" to="/manage-projects">
-                            All Proposals
+                            <Link className="nav-link active">
+                            All Voting
                             </Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link">
-                            Ongoing Proposals
+                            Ongoing 
                             </Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link">
-                            Completed Proposals
+                            Completed
                             </Link>
                         </li>
                         </ul>
@@ -128,7 +128,7 @@ const Voting = (props) => {
                                     poll.map(item => {
                                         
                                         return (
-                                            <div className="projects-card flex-fill">
+                                            <div className="projects-card flex-fill" style={{"margin-bottom": "30px"}}>
                                             <div className="card-body">
                                                 <div className="projects-details align-items-center">
                                                 <div className="project-info">
