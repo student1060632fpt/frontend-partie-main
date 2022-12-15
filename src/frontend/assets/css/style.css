@@ -7980,7 +7980,6 @@ label.file-upload.image-btn {
 	margin-left: auto;
 	-ms-flex: 0 0 200px;
 	flex: 0 0 200px;
-	max-width: 200px;
 }
 
 .provider-img {
@@ -23185,4 +23184,76 @@ span.badge.badge-pill.badge-design {
 	.testimonial-two .owl-item.active {
 		width: 296px !important;
 	}
+
 }
+
+
+.staking {
+	display: flex;
+	/* align-items: center; */
+	justify-content: space-evenly;
+}
+
+.staking .overview{
+	display: flex;
+	/* align-items: center; */
+	/* justify-content: space-evenly; */
+}
+.flex {
+	display: flex;
+}
+
+
+.voting {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+}
+
+.voting .element {
+	width: 80%;
+	margin-top: 10px;
+}
+
+.voting .vote {
+	margin-bottom: 10px;
+    border-radius: 50px;
+    padding: 12px 25px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+	background: #ff5b37;
+    border: 1px solid #ff5b37;
+}
+
+.voting .option {
+    border-radius: 50px;
+    padding: 12px 25px;;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.voting-head {
+	font-size:20px; 
+	font-weight:bold; 
+	padding: 12px 25px;
+}
+
+.voting-sidebar {
+	padding: 6px 6px;
+}
+
+.voting-claim {
+	margin: 10px 15px;
+    border-radius: 20px;
+    padding: 10px 15px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+	background: #ff5b37;
+    border: 1px solid #ff5b37;
+}
+

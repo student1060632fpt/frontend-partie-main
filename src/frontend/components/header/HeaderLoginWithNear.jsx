@@ -5,9 +5,8 @@ import { useLocation } from 'react-router-dom';
 const HeaderLoginWithNear = () => {
   let location = useLocation()
   const {wallet} = useSelector(state => state.wallet)
-  console.log({wallet});
 
-  console.log({location});
+
   const pathname = location.pathname.split("/")[1];
   return (
     <ul className="nav header-navbar-rht">
@@ -23,7 +22,7 @@ const HeaderLoginWithNear = () => {
       </li>
       <li className={pathname === "post-project" ? "active" : ""}>
         <Link to="/post-project" className="login-btn">
-          Post a Job{" "}
+          Post a Project{" "}
         </Link>
       </li>
     </ul>

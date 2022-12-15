@@ -9,6 +9,9 @@ import PostProject from "./components/postproject";
 //home
 import Home from "./components/home";
 
+//staking
+import Staking from "./components/staking";
+
 //For Employee
 import Developer from "./components/foremployers/developer/developer";
 import DeveloperDetails from "./components/foremployers/developer/developer_details";
@@ -106,6 +109,8 @@ import './assets/plugins/datatables/datatables.min.css';
 import './assets/js/bootstrap.bundle.min.js';
 import './assets/js/profile-settings.js';
 import './assets/js/slick.js';
+import Voting from "./components/forfreelancer/voting";
+import VotingDetail from "./components/forfreelancer/voting_detail";
 
 
 if (
@@ -115,6 +120,7 @@ if (
   require('./assets/js/bootstrap.min.js');
   require("./assets/css/style.css");
 }
+
 const AppContainer = function (props) {
   
   if (props) {
@@ -206,6 +212,10 @@ const AppContainer = function (props) {
           <Route exact path="/company-profile" component={CompanyProfile}/>
           <Route exact path="/post-project" component={PostProject} />  
           <Route exact path="/company-project" component={CompanyProject}/>
+
+          {/* Staking */}
+          <Route exact path="/staking" component={Staking} /> 
+
          {/* For Employer */}
             <Route exact path="/developer" component={Developer} />
             <Route exact path="/developer-details" component={DeveloperDetails} /> 
@@ -233,17 +243,19 @@ const AppContainer = function (props) {
             <Route exact path="/change-password" component={ChangePassword} />
             <Route exact path="/delete-account" component={DeleteAccount} />
             <Route exact path="/verify-identity" component={VerifyIdentity} /> 
-            <Route exact path="/project-proposals" component={Projectproposal} />
+            <Route exact path="/project-proposals/:id" component={Projectproposal} />
             {/* For Freelancer */}
             <Route exact path="/project" component={Project} />
-            <Route exact path="/project-details" component={ProjectDetails} /> 
+            <Route exact path="/project-details/:id" component={ProjectDetails} /> 
             <Route exact path="/freelancer-dashboard" component={FreelancerDashboard} />
             <Route exact path="/freelancer-project-proposals" component={FreelancerProjectproposal} />
             <Route exact path="/view-proposals" component={ViewProposals} />
+            <Route exact path="/voting" component={Voting} />
+            <Route exact path="/voting-detail" component={VotingDetail} />
             <Route exact path="/freelancer-completed-projects" component={FreelacerCompletedProjects} />
             <Route exact path="/freelancer-ongoing-projects" component={FreelacerOngoingProjects} />
             <Route exact path="/freelancer-cancelled-projects" component={FreelacerCancelledProjects} />
-            <Route exact path="/freelancer-view-project-detail" component={FreelancerViewProjectdetails} />
+            <Route exact path="/freelancer-view-project-detail/:id" component={FreelancerViewProjectdetails} />
             <Route exact path="/freelancer-files" component={FreelancerFile} />
             <Route exact path="/freelancer-payment" component={FreelancerPayment} />
             <Route exact path="/freelancer-milestones" component={FreelancerMilestone} />
