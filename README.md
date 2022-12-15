@@ -26,8 +26,8 @@ Nhóm em có dự định tạo Một Scheduled Social, ứng dụng thực hi�
 - Tuần 4: Kết nối Front-end với API và smart contract. Hoàn thiện project và chuẩn bị cho Demo Pitching Day
 
 ## 4. Flow chart luồng thuyết trình
-
-[https://drive.google.com/file/d/19F_OKD9PUu69Mw8wAPdtTYw2QBudfeBE/view?usp=sharing](https://drive.google.com/file/d/19F_OKD9PUu69Mw8wAPdtTYw2QBudfeBE/view?usp=sharing)
+![alt text for screen readers](/flow.png "Text to show on mouseover")
+[https://drive.google.com/file/d/19F_OKD9PUu69Mw8wAPdtTYw2QBudfeBE/view?usp=sharing]
 
 ## 5. front-end:
 
