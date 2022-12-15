@@ -255,7 +255,7 @@ const AppContainer = function (props) {
             <Route exact path="/freelancer-completed-projects" component={FreelacerCompletedProjects} />
             <Route exact path="/freelancer-ongoing-projects" component={FreelacerOngoingProjects} />
             <Route exact path="/freelancer-cancelled-projects" component={FreelacerCancelledProjects} />
-            <Route exact path="/freelancer-view-project-detail" component={FreelancerViewProjectdetails} />
+            <Route exact path="/freelancer-view-project-detail/:id" component={FreelancerViewProjectdetails} />
             <Route exact path="/freelancer-files" component={FreelancerFile} />
             <Route exact path="/freelancer-payment" component={FreelancerPayment} />
             <Route exact path="/freelancer-milestones" component={FreelancerMilestone} />
