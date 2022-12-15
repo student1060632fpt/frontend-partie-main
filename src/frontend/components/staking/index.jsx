@@ -124,26 +124,26 @@ const Staking = (props) => {
 
               {/* project list */}
               <div className="staking">
-                <div className="" style={{ width: "70%" }}>
-                  <span>Overview</span>
+                <div className="" style={{ width: "70%"}}>
+                  <h3>Overview</h3>
                   <div className="overview">
-                    <div className="border" style={{ width: "50%" }}>
+                    <div className="border" style={{ width: "50%","border-radius": "10px", "margin-right": "8px",  "margin-top": "8px"  }}>
                       <span>Total staked</span>
-                      <p>{totalStaked / (10 ** 18)}</p>
+                      <p>{totalStaked / (10 ** 18)} PAT</p>
                     </div>
-                    <div className="border" style={{ width: "50%" }}>
+                    <div className="border" style={{ width: "50%","border-radius": "10px", "margin-right": "8px",  "margin-top": "8px"  }}>
                       <span>APR</span>
-                      <p>3.62%</p>
+                      <p>36.2%</p>
                     </div>
                   </div>
 
-                  <div className="border">
+                  <div className="border" style={{"border-radius": "10px", "margin-right": "8px",  "margin-top": "8px"  }}>
                     <span>Stake Information</span>
                     <p>Claim your share of protocol revenue generated.</p>
                   </div>
                 </div>
-                <div className="border" style={{ width: "30%" }}>
-                  <div className="border">
+                <div className="" style={{ width: "30%"}}>
+                  <div className="border" style={{"border-radius": "10px", "margin-right": "8px",  "margin-top": "8px" }}>
                     <Tabs>
                       <TabList>
                         <Tab>Stake</Tab>
@@ -151,8 +151,8 @@ const Staking = (props) => {
                       </TabList>
 
                       <TabPanel>
-                        <div>
-                          <div>
+                        <div style={{"margin":"10px 10px"}}>
+                          <div className="d-flex justify-content-between align-items-center voting-sidebar">
                             <span>Balance</span>
                             <span>{balanceFt / (10 ** 18)} PAT</span>
                           </div>
@@ -191,8 +191,8 @@ const Staking = (props) => {
                         </div>
                       </TabPanel>
                       <TabPanel>
-                        <div>
-                          <div>
+                        <div style={{"margin":"10px 10px"}}>
+                          <div className="d-flex justify-content-between align-items-center voting-sidebar">
                             <span>Balance</span>
                             <span>{balanceVeFt / (10 ** 18)} vePAT</span>
                           </div>
@@ -231,9 +231,9 @@ const Staking = (props) => {
                       </TabPanel>
                     </Tabs>
                   </div>
-                  <div className="border">
-                    <span>My Positions</span>
-                    <div className="flex">
+                  <div className="border" style={{"border-radius": "10px", "margin-right": "8px",  "margin-top": "8px" }}>
+                    <span style={{"margin":"8px"}}>My Positions</span>
+                    <div className="d-flex justify-content-between align-items-center voting-sidebar">
                       <div>
                         <p>Staked</p>
                         <p>{balanceVeFt / (10 ** 18)} PAT</p>
