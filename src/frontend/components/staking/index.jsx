@@ -51,13 +51,17 @@ const Staking = (props) => {
     console.log("stringData ", stringData);
     const rp = stringData.replace(/["]+/g, '"');
     console.log("rp: ", rp);
-    await contract_id
-      .get("ftContractId")
-      .ft_transfer_call(
-        "staking-test21.thanhdevtest.testnet",
-        amount.toString(),
-        rp
-      );
+    try {
+      await contract_id
+        .get("ftContractId")
+        .ft_transfer_call(
+          "staking-test21.thanhdevtest.testnet",
+          amount?.toString(),
+          rp
+        );
+    } catch (error) {
+      console.log({ error });
+    }
   }
 
   async function submitUnStake(amount_stake) {
@@ -69,12 +73,9 @@ const Staking = (props) => {
   const handelChangeDeposit = (event) => {
     let value = event.target.value;
     var regex1 = /^[0-9]*(\.)?[0-9]*$/g;
-    const check = !regex1.test(event.target.value);
-    if (check) {
-      value = valueDeposit;
-    }
-    if (value > balanceFt / 10 ** 18) {
-      value = balanceFt / 10 ** 18;
+    value = valueDeposit;
+    if (value > balanceVeFt / 10 ** 18) {
+      value = balanceVeFt / 10 ** 18;
     }
     setValueDeposit(value);
   };
@@ -148,58 +149,54 @@ const Staking = (props) => {
                         <span>Balance</span>
                         <span>{balanceFt / 10 ** 18} PAT</span>
                       </div>
-                      <form>
-                        <div className="row">
-                          <div className="col-md-12">
-                            <div className="form-group">
-                              <div className="row">
-                                <div className="col-md-10">
-                                  <label htmlFor="first_name">
-                                    Stake your token
-                                  </label>
-                                  <input
-                                    className="form-control"
-                                    type="text"
-                                    placeholder="0.0"
-                                    value={valueDeposit}
-                                    minLength={1}
-                                    maxLength={20}
-                                    onChange={handelChangeDeposit}
-                                  />
-                                </div>
-                                <div className="col-md-2 d-flex align-items-center">
-                                  <button
-                                    className="btn btn-outline-primary"
-                                    onClick={() => {
-                                      setValueDeposit(balanceFt / 10 ** 18);
-                                    }}
-                                  >
-                                    MAX
-                                  </button>
-                                </div>
+                      <div className="row">
+                        <div className="col-md-12">
+                          <div className="form-group">
+                            <div className="row">
+                              <div className="col-md-10">
+                                <label htmlFor="first_name">
+                                  Stake your token
+                                </label>
+                                <input
+                                  className="form-control"
+                                  type="text"
+                                  placeholder="0.0"
+                                  value={valueDeposit}
+                                  // minLength={1}
+                                  // maxLength={20}
+                                  onChange={handelChangeDeposit}
+                                />
+                              </div>
+                              <div className="col-md-2 d-flex align-items-center">
+                                <button
+                                  className="btn btn-outline-primary"
+                                  onClick={() => {
+                                    setValueDeposit(balanceFt / 10 ** 18);
+                                  }}
+                                >
+                                  MAX
+                                </button>
                               </div>
                             </div>
                           </div>
-
-                          <div className="col-md-12 text-end">
-                            <button
-                              type="submit"
-                              className="btn-primary click-btn"
-                              onClick={() => {
-                                submitStake(
-                                  ethers.utils.parseUnits(
-                                    valueDeposit.toString(),
-                                    18
-                                  )
-                                );
-                              }}
-                              disabled={valueDeposit ? false : true}
-                            >
-                              Stake
-                            </button>
-                          </div>
                         </div>
-                      </form>
+
+                        <div className="col-md-12 text-end">
+                          <button
+                            className="btn-primary click-btn"
+                            onClick={() =>
+                              submitStake(
+                                ethers.utils.parseUnits(
+                                  "11",
+                                  18
+                                )
+                              )
+                            }
+                          >
+                            Stake
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -211,58 +208,55 @@ const Staking = (props) => {
                         <span>Balance</span>
                         <span>vePAT {balanceVeFt / 10 ** 18}</span>
                       </div>
-                      <form>
-                        <div className="row">
-                          <div className="col-md-12">
-                            <div className="form-group">
-                              <div className="row">
-                                <div className="col-md-10">
-                                  <label htmlFor="first_name">
-                                    UnStake your token
-                                  </label>
-                                  <input
-                                    className="form-control"
-                                    type="text"
-                                    placeholder="0.0"
-                                    value={valueWithdraw}
-                                    minLength={1}
-                                    maxLength={20}
-                                    onChange={handelChangeWithdraw}
-                                  />
-                                </div>
-                                <div className="col-md-2 d-flex align-items-center">
-                                  <button
-                                    className="btn btn-outline-primary"
-                                    onClick={() => {
-                                      setValueWithdraw(balanceVeFt / 10 ** 18);
-                                    }}
-                                  >
-                                    MAX
-                                  </button>
-                                </div>
+                      <div className="row">
+                        <div className="col-md-12">
+                          <div className="form-group">
+                            <div className="row">
+                              <div className="col-md-10">
+                                <label htmlFor="first_name">
+                                  UnStake your token
+                                </label>
+                                <input
+                                  className="form-control"
+                                  type="text"
+                                  placeholder="0.0"
+                                  value={valueWithdraw}
+                                  // minLength={1}
+                                  // maxLength={20}
+                                  onChange={handelChangeWithdraw}
+                                />
+                              </div>
+                              <div className="col-md-2 d-flex align-items-center">
+                                <button
+                                  className="btn btn-outline-primary"
+                                  onClick={() => {
+                                    setValueWithdraw(balanceVeFt / 10 ** 18);
+                                  }}
+                                >
+                                  MAX
+                                </button>
                               </div>
                             </div>
                           </div>
-
-                          <div className="col-md-12 text-end">
-                            <button
-                              type="submit"
-                              className="btn-primary click-btn"
-                              onClick={() => {
-                                submitUnStake(
-                                  ethers.utils.parseUnits(
-                                    valueWithdraw.toString(),
-                                    18
-                                  )
-                                );
-                              }}
-                              disabled={valueWithdraw ? false : true}
-                            >
-                              UnStake
-                            </button>
-                          </div>
                         </div>
-                      </form>
+
+                        <div className="col-md-12 text-end">
+                          <button
+                            className="btn-primary click-btn"
+                            onClick={() => {
+                              return submitUnStake(
+                                ethers.utils.parseUnits(
+                                  valueWithdraw.toString(),
+                                  18
+                                )
+                              );
+                            }}
+                            disabled={valueWithdraw ? false : true}
+                          >
+                            UnStake
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

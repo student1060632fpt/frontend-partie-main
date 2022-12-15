@@ -133,10 +133,9 @@ const Voting = (props) => {
                                                 <div className="projects-details align-items-center">
                                                 <div className="project-info">
                                                     <span>{item[1].creator}</span>
-                                                    <h2>Website Designer Required For Directory Website Designer Required For Directory</h2>
-                                                    <h3>Question: {item[1].question}</h3>
-                                                    <h2>Option: {item[1].variants[0].message}</h2>
-                                                    <h2>Option: {item[1].variants[1].message}</h2>
+                                                    <h2>Question: {item[1].question}</h2>
+                                                    <p>Option: {item[1].variants[0].message}</p>
+                                                    <p>Option: {item[1].variants[1].message}</p>
                                                     <div className="customer-info">
                                                     <ul className="list-details">
                                                         <li>
