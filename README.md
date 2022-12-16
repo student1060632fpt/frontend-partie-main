@@ -25,11 +25,27 @@ Nhóm em có dự định tạo Một Scheduled Social, ứng dụng thực hi�
 
 - Tuần 4: Kết nối Front-end với API và smart contract. Hoàn thiện project và chuẩn bị cho Demo Pitching Day
 
-## 4. Flow chart luồng thuyết trình
+
+## 4. Thành viên nhóm
+
+- Nguyễn Lê Xuân Hòa - 2033145 - hoa.nguyen_bk@hcmut.edu.vn
+
+- Hoàng Đình Thành - 1915130 - thanh.hoangbk2k.k19@hcmut.edu.vn
+
+- Nguyễn Hồng Quân - 2052228 - quan.nguyen2711@hcmut.edu.vn
+
+## 5. Demo website app:
+
+[https://partie-hackathon.vercel.app/template/index](https://partie-hackathon.vercel.app/template/index)
+
+
+
+
+## 6. Flow chart luồng thuyết trình
 ![alt text for screen readers](/flow.png "Text to show on mouseover")
 [https://drive.google.com/file/d/19F_OKD9PUu69Mw8wAPdtTYw2QBudfeBE/view?usp=sharing]
 
-## 5. front-end:
+## 7. front-end:
 
 ### a. trang:
 
@@ -76,7 +92,7 @@ Nhóm dùng vercel để deploy, tuy là vercel setup hơi chậm nhưng mà ver
 
 - Link github front end để test
 
-[student1060632fpt/frontend-partie-main (github.com)](https://github.com/student1060632fpt/frontend-partie-main)
+[Link github front end để test](https://github.com/student1060632fpt/partie-hackathon-frontend)
 
 - **Source github frontend bản chính**
 
@@ -101,7 +117,7 @@ Dự án được định sẵn sẽ cấu trúc theo React Global thông dụng
 npm start
 ```
 
-## 6.  Smart contract
+## 8.  Smart contract
 
 - source UI test để get data từ smc bản cũ
 
@@ -115,7 +131,7 @@ npm start
 
 [https://github.com/thanh-hdt/smc-partie-team](https://github.com/thanh-hdt/smc-partie-team)
 
-## 7.  function backend:
+## 9.  function backend:
 
 - sign-in
   - POST - json: {address: string} -> lấy address làm token
@@ -130,16 +146,4 @@ npm start
   - UPDATE khi chưa có người nhận
   - DELETE/:jobId
 - quản lý freelancer
-
-### 8. Thành viên nhóm
-
-- Nguyễn Lê Xuân Hòa - 2033145 - hoa.nguyen_bk@hcmut.edu.vn
-
-- Hoàng Đình Thành - 1915130 - thanh.hoangbk2k.k19@hcmut.edu.vn
-
-- Nguyễn Hồng Quân - 2052228 - quan.nguyen2711@hcmut.edu.vn
-
-### 9. Demo website app:
-
-[https://partie-hackathon.vercel.app/template/index](https://partie-hackathon.vercel.app/template/index)
 
