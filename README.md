@@ -4,7 +4,21 @@
 
 Nhóm em có dự định tạo Một Scheduled Social, ứng dụng thực hiện task cho quản lý và nhân viên, hoặc cho các nhân viên remote, freelancer để thực hiện các task của customer. Điểm đặc biệt ở đây là quản lý, doanh nghiệp có thể đặt phần thưởng hay mức phạt cho từng task bằng token.
 
-## 2. Các công nghệ sử dụng:
+## 2. Demo website app:
+- Link website demo
+
+[https://partie-hackathon.vercel.app/template/index](https://partie-hackathon.vercel.app/template/index)
+
+- Link video demo - Frontend
+
+[https://www.youtube.com/watch?v=hIRKh-aIwcg&ab_channel=DollNguy%E1%BB%85nStudio](https://www.youtube.com/watch?v=hIRKh-aIwcg&ab_channel=DollNguy%E1%BB%85nStudio)
+
+- Link video demo - Backend server
+
+https://drive.google.com/file/d/1r3PBKNfwgPWcpGTmMRgHg2wRV5AqKXcu/view?usp=sharing
+
+
+## 3. Các công nghệ sử dụng:
 
 - Version control: Github, branch
 - Front-end:
@@ -15,7 +29,7 @@ Nhóm em có dự định tạo Một Scheduled Social, ứng dụng thực hi�
 - Back-end: Django, MongoDB, Python
 - Smart Contract: Rust
 
-## 3. Kế hoạch thực hiện dự án của nhóm:
+## 4. Kế hoạch thực hiện dự án của nhóm:
 
 - Tuần 1: Cả nhóm lên kế hoạch, bàn bạc về ý tưởng, tính khả thi, tên và logo dự án
 
@@ -26,19 +40,13 @@ Nhóm em có dự định tạo Một Scheduled Social, ứng dụng thực hi�
 - Tuần 4: Kết nối Front-end với API và smart contract. Hoàn thiện project và chuẩn bị cho Demo Pitching Day
 
 
-## 4. Thành viên nhóm
+## 5. Thành viên nhóm
 
-- Nguyễn Lê Xuân Hòa - 2033145 - hoa.nguyen_bk@hcmut.edu.vn
+- Nguyễn Lê Xuân Hòa - Frontend - hoa.nguyen_bk@hcmut.edu.vn
 
-- Hoàng Đình Thành - 1915130 - thanh.hoangbk2k.k19@hcmut.edu.vn
+- Hoàng Đình Thành - Smart contract & frontend - thanh.hoangbk2k.k19@hcmut.edu.vn
 
-- Nguyễn Hồng Quân - 2052228 - quan.nguyen2711@hcmut.edu.vn
-
-## 5. Demo website app:
-
-[https://partie-hackathon.vercel.app/template/index](https://partie-hackathon.vercel.app/template/index)
-
-
+- Nguyễn Hồng Quân - Backend - quan.nguyen2711@hcmut.edu.vn
 
 
 ## 6. Flow chart luồng thuyết trình
