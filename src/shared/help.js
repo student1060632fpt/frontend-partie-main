@@ -20,7 +20,8 @@ const makeRandomId = () => {
 const  daysRemaining = (time)=> {
   var eventdate = moment.unix(time);
   var todaysdate = moment();
-  return eventdate.diff(todaysdate, 'days');
+  // return eventdate.diff(todaysdate, 'days');
+  return 7;
 }
 
 

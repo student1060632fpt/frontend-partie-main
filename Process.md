@@ -52,3 +52,7 @@ viết lại 2 object
     "voting_id": ""
 }
 ```
+
+# Todo 31/12
+- fix logo to partie
+- fix date of project
